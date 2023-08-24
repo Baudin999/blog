@@ -98,7 +98,7 @@ and two concrete classes. Life seems good right?
   w._search = {
     DATA_URL: '/blog/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/blog/',
-    INDEX_KEY: 'index--2023-08-24T17:16:35+02:00',
+    INDEX_KEY: 'index--2023-08-24T17:27:48+02:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -365,12 +365,12 @@ responsibilities and violate the
 <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">Single Responsibility Principle (SRP)</a>.</p>
 
 <p>For me, this SRP is the single most important guideline against complexity. A large
-system is very complex, if your objects have a lot of responsibilitites it will be
+system is very complex, if your objects have a lot of responsibilities it will be
 extremely difficult to change the system. If your object do only one thing, this will
 become a lot easier.</p>
 
 <p>Before we go into the details of how inheritance make changing code extremely difficult, 
-let’s go over a few of the pitfals of these <em>God Objects</em>.</p>
+let’s go over a few of the pitfalls of these <em>God Objects</em>.</p>
 
 <h4 id="tight-coupling">Tight coupling</h4>
 <p>Objects that inherit functionalities are more tightly coupled. This means, when a base 
@@ -391,7 +391,7 @@ originate from the derived class’s code but from somewhere up the inheritance 
 
 <p>It also, literally, hides information. The number of times I have stared at a piece of 
 code, amazed at the bug and wondering where it came from, only to discover that the 
-actual code which is wreaking havok on my product is hidden deeply in a inheritance
+actual code which is wreaking havoc on my product is hidden deeply in a inheritance
 tree; are too many to count. I like to see what something does. I want everything in 
 a single file. I want to set a break-point or <code class="language-plaintext highlighter-rouge">printf</code> some debug info and know what is
 happening where.</p>
@@ -402,7 +402,7 @@ can provide reusability, it often comes at the cost of flexibility. As shown in 
 it’s much cleaner to use composition where each class or trait does one thing and does it
 well. It is easier to reuse a small, well-defined component than a large, monolithic one.</p>
 
-<p>Reuse comes in multiple forms, reuse of data and reuse of fuctionality. When you reuse data
+<p>Reuse comes in multiple forms, reuse of data and reuse of functionality. When you reuse data
 you are reusing information either to display it differently, or to act upon differently.
 This is not bad, it is easy to refactor and easy to maintain. Reuse of functionality leads
 to all manner of type information being spread throughout the code. Generics, Generic type
