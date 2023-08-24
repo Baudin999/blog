@@ -15,8 +15,11 @@ git checkout gh-pages
 if ($LASTEXITCODE -ne 0) {
     Write-Host "gh-pages branch doesn't exist. Creating a new one..."
     git checkout --orphan gh-pages
-    git rm -rf .
 }
+
+# Clean up everything in the gh-pages branch to mirror _site exactly
+Write-Host "Cleaning up gh-pages branch..."
+git rm -rf .
 
 # Copy _site contents to the root
 Write-Host "Copying _site content to root..."
