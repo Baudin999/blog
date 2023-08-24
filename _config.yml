@@ -20,9 +20,9 @@ url: "https://baudin999.github.io/blog/" # the base hostname & protocol for your
 github_username: Baudin999 
 
 # Build settings
-theme: jekyll-theme-midnight #minima
+theme: minima
 plugins:
-  # - jekyll-feed
+  - jekyll-feed
 
 # Exclude from processing.
 # The following items will not be processed, by default.
