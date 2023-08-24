@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Hello, World
 author: Carlos Kelkboom
 date: 2023-08-23
