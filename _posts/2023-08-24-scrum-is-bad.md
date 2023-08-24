@@ -9,7 +9,7 @@ tags: Programming Agile
 
 > I do not pander, I do not soften words and I do not expect everyone to agree with this article.
   I don't even think everyone will *understand* this article. With that said, I want to preface
-  my writing with a general expenation. I love software and I love quality. This article is more
+  my writing with a general explenation. I love software and I love quality. This article is more
   a love letter to engineering than a critique on Scrum. If you *do* want to read this as a critique,
   I will not hold it against you...
 
