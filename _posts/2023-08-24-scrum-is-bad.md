@@ -3,13 +3,13 @@ layout: post
 title: The failures of modern agile frameworks 
 author: Carlos Kelkboom
 date: 2023-08-24
-published: true
+published: false
 tags: Programming Agile
 ---
 
 > I do not pander, I do not soften words and I do not expect everyone to agree with this article.
   I don't even think everyone will *understand* this article. With that said, I want to preface
-  my writing with a general explenation. I love software and I love quality. This article is more
+  my writing with a general explanation. I love software and I love quality. This article is more
   a love letter to engineering than a critique on Scrum. If you *do* want to read this as a critique,
   I will not hold it against you...
 
@@ -27,11 +27,11 @@ look at the products themselves. His skill had not increased, his products are s
 
 I know, after a rant about [inheritance](https://baudin999.github.io/blog/2023/08/24/inheritance-is-bad.html), I 
 now have the gall to rant about [Scrum](https://www.agilealliance.org/glossary/scrum/). I promise you
-that the only thing I am interrested in, is simplicity. I like it when: *Good engineers are left to do
+that the only thing I am interested in, is simplicity. I like it when: *Good engineers are left to do
 what they are good at!*
 
 For me Scrum is the antithesis of that. Scrum prefers a process over the result and Scrum pretends to 
-fit onto and into any software organisation\*. Transitioning from the early 90s, when Jeff Sutherland and 
+fit onto and into any software organization\*. Transitioning from the early 90s, when Jeff Sutherland and 
 Ken Schwaber were influenced by Takeuchi and Nonaka's analogy of high-performing teams to a game of 
 rugby, Scrum emerged as an answer to the limitations of traditional project management. Its structure 
 promised agility, adaptability, and results. And for a time, it seemed to deliver just that.
@@ -49,12 +49,12 @@ opinion, is much better than Scrum.
 
 *\* If you feel offended by this remark, I invite you to plow thought the literature. There is not a
 single remark on the impact of a good engineer on the product. It is all about process. If you still 
-do not believe me, read the quotes the the next chapter.*
+do not believe me, read the quotes the next chapter.*
 
 ## What is Scrum?
 
-Let's give a general definition. I do not want to invent these definitions myself, so I will give four
-definitions.
+Let's give a general definition of Scrum. I do not want to invent them myself, so I will give four
+definitions from great sources.
 
 ### Wikipedia
 
@@ -117,8 +117,8 @@ These are just a few lines picked from the definitions. And what do I miss?
 
 A great piece of software makes the customer and the developer happy. If I read these scrum articles
 they almost have you believe that a process can compensate for everything. But it cannot. A bad dev
-will ruin your project and no amount of process can save you. Just like the oposite is true, a good 
-dev can be ruined by a process. For me, scrum is the embodyment of this philosophy. 
+will ruin your project and no amount of process can save you. Just like the opposite is true, a good 
+dev can be ruined by a process. For me, scrum is the embodiment of this philosophy. 
 
 My philosophy is simple, it can be summed up in a single sentence:
 
@@ -128,7 +128,8 @@ My philosophy is simple, it can be summed up in a single sentence:
 
 Over the past two decades, there's been an explosion in the commercial offerings around Scrum: 
 certifications, training sessions, coaching, tools, and more. This burgeoning industry,
-inevitably shapes how Scrum is presented and to whom. Martin Fowler even calls this the: *"Agile Industrial Complex"* [3]
+inevitably shapes how Scrum is presented and to whom. MMartin Fowler has even termed this phenomenon 
+the: *"Agile Industrial Complex"* [3]
 
 One can't help but notice that much of the Scrum narrative, as peddled by the industry, seems 
 tailored to suit non-technical stakeholders.[1] The focus on process, ceremonies, roles, and the 
@@ -148,11 +149,13 @@ This commercial motive doesn't necessarily mean that Scrum itself is flawed. But
 that the way Scrum is often presented and packaged for consumption might be skewing priorities. 
 Instead of emphasizing the critical importance of skilled engineers, technical excellence, and 
 product quality, the narrative leans heavily on processes and roles. The result? Organizations 
-might find themselves in a sticky situation when they have spend thousands if not millions of
+might find themselves in a sticky situation when they have spent thousands if not millions of
 dollars, only to find that the root of their problems were never the process itself.
 
 *[1] As can be seen from the quotes off of the websites. There is not a single sentence or 
 remark towards quality or skill.*
+
+
 [2]
 
 ![scrum agile events](/blog/assets/img/Scrum_Agile_events.png)
@@ -177,21 +180,21 @@ nothing to do with Scrum and everything to do with the quality of the engineerin
 
 If you are working in a larger organisation and are working with scrum and you find the rituals and
 processes comforting, you might think that I am looking at this in a biassed way. I am not. I am 
-looking at this fromt he perspective of the software. In the definitions it is stated that Scrum 
+looking at this from the perspective of the software. In the definitions it is stated that Scrum 
 helps an organisation focus on the product. If that is so, they must mean Scrum as a product, because
-nothing in their defintion states how to get to a good software product. They say nothing about the
+nothing in their definition states how to get to a good software product. They say nothing about the
 qualities of the engineers. They say nothing about the scope of a project or the trust the stakeholders
-need to let a team "code in peace". Nothing in their description is condusive to a well coded end-product
+need to let a team "code in peace". Nothing in their description is conducive to a well coded end-product
 which will stand the test of time, can be extended when needed and does not cover more features
 than needed. 
 
 ## What is the solution?
 I believe, complexity is the only enemy in a large project. Complexity can be found on any level and
-is a literal problem for every person envolved. For example:
+is a literal problem for every person involved. For example:
 
 * If you have multiple teams, management is facing complexity 
-* If you create an over-engineerd microservice architecture, your are running against complexity
-* If you try to predict when the project will be done, you will face it's complexity 
+* If you create an over-engineered microservice architecture, your are running against complexity
+* If you try to predict when the project will be done, you will face its complexity 
 
 *Complexity* is the main problem. *That* is why we need to break problems into smaller chunks. *That* is why
 sprints are sometimes a good idea. Customers do not know what they want before you start working with
@@ -200,8 +203,8 @@ how they see and feel what they asked for and can change what they had wrong.
 
 When software becomes complex, the delivery slows down. It sometimes grinds to a halt. What do companies do?
 They throw manpower against that problem. But what should they do? Reduce the teams to the minimal number 
-of people to fix the bottle-necks in the delivery. Do not be afraid to re-write. Do not be afraid the 
-make mistakes. Fail, learn, fix. A truely agile company, knows that we do not write code once. We write
+of people to fix the bottlenecks in the delivery. Do not be afraid to re-write. Do not be afraid the 
+make mistakes. Fail, learn, fix. A truly agile company, knows that we do not write code once. We write
 it continuously! A company with a mission, a goal, knows that only great engineers working together and
 learning from each other while the managers keep the wolves at bay, is the only way to succeed!
 
@@ -209,7 +212,7 @@ The solution to this problem is almost trivial, I will sum it up in a few lines:
 
 1. Throw away every process handbook you have
 1. Fire every engineer you do not trust (not skill, trust!)
-1. Everyone envolved with the process writes code
+1. Everyone involved with the process writes code
 1. Every requirement or feature needs to have consensus of the team
 1. For every new feature, delete a feature
 1. If something works well, make it better
@@ -221,17 +224,17 @@ you just need common sense.
 I will try to explain the ideas behind the solution briefly. This is not a guide, these are just some things
 you can put into practice which will help you make better software:
 
-Every book written is either theorethical, or an account of experience. While the latter is fun to read, it
-does not take into account the extraordinary person who achieved those feats. I advice you to focus on the 
-employees who are trustworthy and who can inspire your organisation. They will create the software and they
+Every book written is either theoretical, or an account of experience. While the latter is fun to read, it
+does not take into account the extraordinary person who achieved those feats. I advise you to focus on the 
+employees who are trustworthy and who can inspire your organization. They will create the software and they
 will bring about a better community. 
 
-If you do not write code, you do not understand the compexity. I will give a bit of nuance. Everyone 
+If you do not write code, you do not understand the complexity. I will give a bit of nuance. Everyone 
 who is envolved with the project should work with or on the project. This can be, but are not limited to: 
 documentation, quality assurance, code or data. A product needs to be good, find people who will make the 
 product good, by loving the foundations of your product instead of the titles your organisation hands out.
 If you work this way, only features which excite the entire team can go forward. We do not need more 
-people mandating or speaking from authority. We need skilled people to be humble and enthousiastic.
+people mandating or speaking from authority. We need skilled people to be humble and enthusiastic.
 
 We are really bad at cleaning up after ourselves. Especially in an ever evolving code base. We will need
 to clean up. And by enforcing that we remove as well as add, we have a better chance to mitigate complexity.
