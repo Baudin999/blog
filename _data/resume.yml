@@ -1,0 +1,20 @@
+title: My Resume
+
+about:
+  content: I'm a passionate software developer with expertise in web development and cloud technologies. I love taking on challenging projects and delivering efficient solutions.
+
+experiences:
+  - position: Software Developer
+    company: ABC Corp.
+    date: January 2020 - Present
+    description: Developed various web applications and services.
+  - position: Junior Developer
+    company: XYZ Ltd.
+    date: June 2018 - December 2019
+    description: Assisted in maintaining the main website and internal tools.
+
+educations:
+  - degree: Bachelor's in Computer Science
+    institution: University of Tech
+    date: September 2015 - June 2019
+    description: Studied core computer science topics and worked on multiple projects.
