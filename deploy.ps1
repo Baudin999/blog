@@ -1,49 +1,37 @@
 
-# build-deploy.ps1
+# Ensure the script stops on the first error
+$ErrorActionPreference = "Stop"
 
-# Build the Jekyll site locally
 Write-Host "Building the Jekyll site..."
-bundle exec jekyll build
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Failed to build the Jekyll site."
-    exit 1
-}
+Invoke-Expression "bundle exec jekyll build"
 
-# Ensure master is clean
-git stash
+# Stash any local changes
+Invoke-Expression "git stash"
 
-# Switch to gh-pages branch (or create it if it doesn't exist)
-Write-Host "Switching to gh-pages branch..."
-git checkout gh-pages
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "gh-pages branch doesn't exist. Creating a new one..."
-    git checkout --orphan gh-pages
-}
+# Switch to the gh-pages branch
+Invoke-Expression "git checkout gh-pages"
 
-git pull origin gh-pages
+# Remove all files and directories except for .git
+Invoke-Expression "git rm -qr ."
 
-# Clean up everything in the gh-pages branch to mirror _site exactly
-Write-Host "Cleaning up gh-pages branch..."
-git rm -rf .
+# Copy all content from _site to the current directory
+Copy-Item -Path _site/* -Destination . -Recurse -Force
 
-# Copy _site contents to the root (excluding .git folder if it exists)
-Write-Host "Copying _site content to root..."
-Copy-Item -Path _site/* -Destination . -Recurse -Force -Exclude ".git"
+# Remove _site directory
+Remove-Item -Path _site -Recurse -Force
 
-# Commit and push changes
-git add .
-git commit -m "Deploying to gh-pages"
-git push origin gh-pages
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Failed to push to gh-pages branch."
-    exit 1
-}
+# Add all changes to git
+Invoke-Expression "git add ."
 
-git checkout master
+# Commit the changes
+Invoke-Expression 'git commit -m "changed"'
 
-# Restore any stashed changes
-git stash pop
+# Push to the gh-pages branch on the origin remote
+Invoke-Expression "git push origin gh-pages"
 
-Write-Host "Deployment to gh-pages completed successfully!"git checkout master
+# Switch back to the master branch
+Invoke-Expression "git checkout master"
 
-Write-Host "Deployment to gh-pages completed successfully!"
+# Pop stashed changes back onto the working directory
+Invoke-Expression "git stash pop"
+# build-deploy.ps1

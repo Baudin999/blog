@@ -80,7 +80,7 @@ Now, let's define the classes again:
 impl SendMessage for Player {
     fn send(&self) -> String {
         let url = "/player";
-        format!("Sending PlayerMessage to {}", url)
+        format!("Sending Player to {}", url)
     }
 }
 
@@ -101,7 +101,7 @@ I would use this something like:
 
 ```rust
 fn main() {
-    let player_msg = PlayerMessage;
+    let player_msg = Player;
     let log_msg = LogMessage;
 
     print_message(&player_msg);
@@ -143,7 +143,7 @@ flexible and harder to maintain. Now, imagine you have a chain of inheritance, a
 change in the foundational class cascades across dozens of classes derived from it. 
 It's a maintenance nightmare.
 
-I always have the guidline that a change should only effect the minimal number of files 
+I always have the guideline that a change should only affect the minimal number of files 
 and classes. With inheritance, when you touch a base class, you need to recompile every
 class inheriting from that base class. This breaks my guideline.
 
@@ -170,7 +170,7 @@ Reuse comes in multiple forms, reuse of data and reuse of fuctionality. When you
 you are reusing information either to display it differently, or to act upon differently.
 This is not bad, it is easy to refactor and easy to maintain. Reuse of functionality leads
 to all manner of type information being spread throughout the code. Generics, Generic type
-guards and interfaces all pop up becuase we want to reuse. All of these features make 
+guards and interfaces all pop up because we want to reuse. All of these features make 
 refactoring your code a lot harder than it needs to be.
 
 #### Example of frailty
@@ -199,7 +199,7 @@ public class PremiumPlayer : Player {
 ```
 By overriding the Send method, we now bypass the original implementation and have forced
 the code to behave differently. We can still use the `PremiumPlayer` as if it is a `Player`
-because of polimorphism. But we can no longer clearly see what is happening. If we want
+because of polymorphism. But we can no longer clearly see what is happening. If we want
 to change the `Send` behavior to always have a header called `x-github-id`, we need to 
 make this change in two places. Increasing the chance at bugs. 
 
@@ -279,12 +279,12 @@ public class PremiumPlayer : IMessage {
 We are passing the `IMessageSender` to the `IMessage` class and with that service we are injecting
 we can send the message. This is a more natural way of writing the code. I still do not like it
 that the `Player` and `PremiumPlayer` classes have these methods which are strictly for sending them, 
-like the `SendMessage` method and the `Serialize` method, but at least they beling to the `IMessage`
+like the `SendMessage` method and the `Serialize` method, but at least they belong to the `IMessage`
 interface and not longer to the class itself.
 
 ### Layers or Services
 Another way to structure this is by making the `MessageSender.Send` a function we can call with
-the correct parameters. We can even make separater methods, making sure we handle the messages
+the correct parameters. We can even make separate methods, making sure we handle the messages
 correctly, no matter what the message is.
 
 ```csharp
@@ -397,8 +397,8 @@ our system that needs these properties can simply inherit from Entity.
 
 # Conclusion
 
-While inheritance is inherently evil. Like all tools in the programmer's toolkit, it has its time and place.
-The key *is* understanding when and how to use it effectively. For behavior-based functionality, composition, 
+While inheritance *is* inherently evil. Like all tools in the programmer's toolkit, it has its time and place.
+The key is understanding when and how to use it effectively. For behavior-based functionality, composition, 
 interfaces, and other patterns usually offer a more flexible and maintainable approach. But for pure data 
 classes where there's a clear, shared set of attributes across multiple objects, inheritance can be a 
 practical solution. Just be sure always to use it judiciously and remain mindful of its potential pitfalls.
