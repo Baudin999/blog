@@ -98,7 +98,7 @@ and two concrete classes. Life seems good right?
   w._search = {
     DATA_URL: '/blog/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/blog/',
-    INDEX_KEY: 'index--2023-08-24T13:22:54+02:00',
+    INDEX_KEY: 'index--2023-08-24T14:40:09+02:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -317,7 +317,7 @@ super and it’s easy to understand. Here’s a bit of rust showing the power of
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">impl</span> <span class="n">SendMessage</span> <span class="k">for</span> <span class="n">Player</span> <span class="p">{</span>
     <span class="k">fn</span> <span class="nf">send</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
         <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"/player"</span><span class="p">;</span>
-        <span class="nd">format!</span><span class="p">(</span><span class="s">"Sending PlayerMessage to {}"</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="nd">format!</span><span class="p">(</span><span class="s">"Sending Player to {}"</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -337,7 +337,7 @@ and is not scattered into my business object.</p>
 <p>I would use this something like:</p>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">player_msg</span> <span class="o">=</span> <span class="n">PlayerMessage</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">player_msg</span> <span class="o">=</span> <span class="n">Player</span><span class="p">;</span>
     <span class="k">let</span> <span class="n">log_msg</span> <span class="o">=</span> <span class="n">LogMessage</span><span class="p">;</span>
 
     <span class="nf">print_message</span><span class="p">(</span><span class="o">&amp;</span><span class="n">player_msg</span><span class="p">);</span>
@@ -379,7 +379,7 @@ flexible and harder to maintain. Now, imagine you have a chain of inheritance, a
 change in the foundational class cascades across dozens of classes derived from it. 
 It’s a maintenance nightmare.</p>
 
-<p>I always have the guidline that a change should only effect the minimal number of files 
+<p>I always have the guideline that a change should only affect the minimal number of files 
 and classes. With inheritance, when you touch a base class, you need to recompile every
 class inheriting from that base class. This breaks my guideline.</p>
 
@@ -406,7 +406,7 @@ well. It is easier to reuse a small, well-defined component than a large, monoli
 you are reusing information either to display it differently, or to act upon differently.
 This is not bad, it is easy to refactor and easy to maintain. Reuse of functionality leads
 to all manner of type information being spread throughout the code. Generics, Generic type
-guards and interfaces all pop up becuase we want to reuse. All of these features make 
+guards and interfaces all pop up because we want to reuse. All of these features make 
 refactoring your code a lot harder than it needs to be.</p>
 
 <h4 id="example-of-frailty">Example of frailty</h4>
@@ -434,7 +434,7 @@ for authentication.</p>
 </code></pre></div></div>
 <p>By overriding the Send method, we now bypass the original implementation and have forced
 the code to behave differently. We can still use the <code class="language-plaintext highlighter-rouge">PremiumPlayer</code> as if it is a <code class="language-plaintext highlighter-rouge">Player</code>
-because of polimorphism. But we can no longer clearly see what is happening. If we want
+because of polymorphism. But we can no longer clearly see what is happening. If we want
 to change the <code class="language-plaintext highlighter-rouge">Send</code> behavior to always have a header called <code class="language-plaintext highlighter-rouge">x-github-id</code>, we need to 
 make this change in two places. Increasing the chance at bugs.</p>
 
@@ -512,12 +512,12 @@ as a parameter.</p>
 <p>We are passing the <code class="language-plaintext highlighter-rouge">IMessageSender</code> to the <code class="language-plaintext highlighter-rouge">IMessage</code> class and with that service we are injecting
 we can send the message. This is a more natural way of writing the code. I still do not like it
 that the <code class="language-plaintext highlighter-rouge">Player</code> and <code class="language-plaintext highlighter-rouge">PremiumPlayer</code> classes have these methods which are strictly for sending them, 
-like the <code class="language-plaintext highlighter-rouge">SendMessage</code> method and the <code class="language-plaintext highlighter-rouge">Serialize</code> method, but at least they beling to the <code class="language-plaintext highlighter-rouge">IMessage</code>
+like the <code class="language-plaintext highlighter-rouge">SendMessage</code> method and the <code class="language-plaintext highlighter-rouge">Serialize</code> method, but at least they belong to the <code class="language-plaintext highlighter-rouge">IMessage</code>
 interface and not longer to the class itself.</p>
 
 <h3 id="layers-or-services">Layers or Services</h3>
 <p>Another way to structure this is by making the <code class="language-plaintext highlighter-rouge">MessageSender.Send</code> a function we can call with
-the correct parameters. We can even make separater methods, making sure we handle the messages
+the correct parameters. We can even make separate methods, making sure we handle the messages
 correctly, no matter what the message is.</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">interface</span> <span class="nc">ISerializable</span> <span class="p">{</span>
@@ -623,8 +623,8 @@ our system that needs these properties can simply inherit from Entity.</p>
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>While inheritance is inherently evil. Like all tools in the programmer’s toolkit, it has its time and place.
-The key <em>is</em> understanding when and how to use it effectively. For behavior-based functionality, composition, 
+<p>While inheritance <em>is</em> inherently evil. Like all tools in the programmer’s toolkit, it has its time and place.
+The key is understanding when and how to use it effectively. For behavior-based functionality, composition, 
 interfaces, and other patterns usually offer a more flexible and maintainable approach. But for pure data 
 classes where there’s a clear, shared set of attributes across multiple objects, inheritance can be a 
 practical solution. Just be sure always to use it judiciously and remain mindful of its potential pitfalls.</p>
