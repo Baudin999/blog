@@ -21,11 +21,14 @@ hide_description=page.hide_description %}
     <!-- Experience section -->
     <section class="resume-section">
         <h2>Experience</h2>
-        {% for experience in site.data.resume.experiences %}
+        {% for experience in site.data.resume.working_experience%}
         <div class="resume-experience">
-            <h3>{{ experience.position }}</h3>
+            <h3>{{ experience.job_title }}</h3>
             <p><strong>{{ experience.company }}</strong> | {{ experience.date }}</p>
-            <p>{{ experience.description }}</p>
+            <p>{{ experience.location }}</p>
+            {% for responsibility in experience.responsibilities %}
+            <p>{{ responsibility }}</p>
+            {% endfor %}
         </div>
         {% endfor %}
     </section>

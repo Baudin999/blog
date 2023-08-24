@@ -1,0 +1,38 @@
+// Variables for consistent styling and easier theme updates
+$primary-font: Arial, sans-serif;
+$secondary-font: 'Georgia', serif;
+$primary-color: #333; // Dark grey
+$secondary-color: #555; // Light grey
+$highlight-color: rgb(45, 16, 9); // Blue
+$spacing-unit: 20px;
+
+.resume-section {
+    background-color: #fff;
+    padding: $spacing-unit;
+
+    h2 {
+        font-family: $secondary-font;
+        color: $highlight-color;
+        border-bottom: 2px solid $secondary-color;
+        padding-bottom: $spacing-unit / 2;
+        margin-bottom: $spacing-unit;
+    }
+}
+
+.resume-experience {
+    margin-top: $spacing-unit;
+
+    h3 {
+        font-size: 1.2em;
+        color: $highlight-color;
+        margin-bottom: $spacing-unit / 2;
+    }
+
+    p {
+        margin-bottom: $spacing-unit / 2;
+
+        &>strong {
+            font-weight: bold;
+        }
+    }
+}

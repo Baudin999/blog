@@ -1,20 +1,56 @@
-title: My Resume
+name: Carlos Kelkboom
 
-about:
-  content: I'm a passionate software developer with expertise in web development and cloud technologies. I love taking on challenging projects and delivering efficient solutions.
+working_experience:
+  - job_title: Technical Director
+    company: Aritificial Core
+    date: 2023 --
+    location: Home, Netherlands
+    responsibilities:
+      - As a Technical Director I am helping the development of an MMO RPG called Corepunk. Creating an MMO 
+        has focused all of my skills. Finding and hiring the right people, refactoring a legacy code-base and 
+        helping the stakeholders make decisions like "which e-commerce platform should we use?"
+      - Creating game servers; I've prototyped and executed game servers in GoLang, Rust and C#
+  - job_title: Technical Fellow
+    company: Essent
+    date: 2022 -- 2023
+    location: Den Bosch, Netherlands
+    responsibilities:
+      - Continued the architectural change I started as a System Architect but scaled to the entire organisation.
+      - Helping Essent focus on the craftsmanship of software development instead of the processes which drive it.
+  - job_title: Architect
+    company: Essent
+    date: 2018 -- 2022
+    location: Den Bosch, Netherlands
+    responsibilities:
+      - Managed 10 teams, about 88 people for the Data & Marketing ART (Agile Release Train) as a System Architect.
+      - Envisioned, Architected and managed the implementation of a custom built, Customer Data Platform and Personalized Marketing stack for Essent.
+      - Changed the architecture from an integration heavy implementation to a Domain Driven Design inspired Data Mesh architecture.
+      - Guided the introduction of Data Science Models including the creation of a Feature Store.
+      - Migrated our Oracle DWH to Snowflake and introduced Data Bricks as our Data Science platform.
+  - job_title: Founded Diophantic Solutions
+    company: Diophantic
+    date: 2014 -- 2018
+    location: Nijmegen, Netherlands
+    responsibilities:
+      - In 2014 I started my own company, Diophantic, where I focused on helping organisations and created a documentation platform for Software Architecture.
+  - job_title: Engineer & Architect
+    company: Various
+    date: 2005 -- 2018
+    location: Netherlands
+    responsibilities:
+      - Created a Digital Portfolio for the ROCs in the Netherlands.
+      - Created a Assessment platform for students (both summative and formative assessments).
+      - Created multiple ERP systems and a distributed Asbestos detection and sampling system.
 
-experiences:
-  - position: Software Developer
-    company: ABC Corp.
-    date: January 2020 - Present
-    description: Developed various web applications and services.
-  - position: Junior Developer
-    company: XYZ Ltd.
-    date: June 2018 - December 2019
-    description: Assisted in maintaining the main website and internal tools.
+about_me: 
+  - Currently, I am the Technical Fellow of Essent. I help Essent realize its ambition of becoming a tech company by picking up the harder architectural problems. I also speak at conferences and write about our progress as a tech company. As a System Engineer I was technically responsible for about ninety developers spread over ten teams, divided into two domains, Personalization and Data & Analytics. I personally envisioned, designed and guided the teams to realize our own Customer Data Platform with personalized marketing. As a Technical Fellow I am trying to scale everything I've learned as a System Engineer, about helping an organisation change, to the entirety of Essent.
+  - I have also guided Essent towards an amalgamation of a Data Mesh architecture and Gartner's Composable Enterprise. I am convinced that a Data Mesh architecture will help us realize our AI ambitions, while a Composable Enterprise will help us achieve development quality and speed. Essent was a traditional enterprise. I call these types or enterprises, "SAP oriented organisations". Through patience and by inspiring people I have managed to turn our organisation towards a Domain/Product oriented organisation. I have built teams to support our new vision and I have guided these teams towards success.
+  - It is important to work with and towards your passions. My passions are reflected in my work; I want to create, inspire and guide the next generations of developers to find their passion and create great software. My philosophy is that an engineer should be great at what they do and an organisation is only great when they enable their employees to be successful.
 
-educations:
-  - degree: Bachelor's in Computer Science
-    institution: University of Tech
-    date: September 2015 - June 2019
-    description: Studied core computer science topics and worked on multiple projects.
+activities:
+  - title: Basketball Coach
+    organization: Wildcats Nijmegen
+  - title: Working on ZDragon
+    description: I have always felt like documentation is not taken seriously. Except for a scale-up in the midst of rapid market expansion, a software developer needs to write code as if they themselves are going to maintain it in five years time. ZDragon helps with this documentation and is a passion project I am working on. It is a new programming language with a lexer, parser and a set of transpilers which transpile the code you write to a beautiful document.
+  - title: Record Music
+    description: I have always had a passion for music and have always been semi active in recording music. These day I am no longer a studio musician but I record my own songs from my own basement and try to play as many instruments as I can.
