@@ -12,9 +12,7 @@
 title: Carlos's Blog 
 email: baudin-sky@pm.me
 description: >- # this means to ignore newlines until "baseurl:"
-  I have been consuming the combined knowledge of my hero's for years. Now, after
-  over 20 years as a software developer, I am ready to give back to everyone. I 
-  hope you enjoy!
+  I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://baudin999.github.io/blog/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: Baudin999 
@@ -34,13 +32,11 @@ author:
   email: baudin-sky@pm.me
   picture: /blog/assets/img/self.jfif
   about: |
-   Hi, I'm Carlos and I have been a software developer for over 20 years.
-   I've learned a lot from blog-posts, stackoverflow and YouTube, but I've
-   never felt confident enough to share my knowledge and give back to the 
-   community. 
+   Hi, I'm Carlos, and I've been a software developer for over 20 years. I've learned a lot 
+   from blog posts, Stack Overflow, and YouTube, but I've never felt confident enough to share 
+   my knowledge and give back to the community.
 
-   This blog, is my attempt at returning the favor and give back to the 
-   community.  
+   This blog is my attempt to return the favor and give back to the community.
 
 menu:
   - title: Résumé 
