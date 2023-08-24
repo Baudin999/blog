@@ -4,7 +4,7 @@ title: Hello, World
 author: Carlos Kelkboom
 date: 2023-08-23
 published: true
-tags: Programming, Writing, Personal
+tags: Programming Writing Personal
 ---
 
 # Hello, World
