@@ -7,7 +7,6 @@ published: true
 tags: Programming Writing Personal
 ---
 
-# Hello, World
 Writing and blogging have always been incredibly important. Most of the things I’ve learned have been through a medium like this. Of course, I have learned a lot from watching YouTube videos or conversing with colleagues, but the written medium stands out like no other. After two decades in this business, I am ready to contribute to the conversation.
 
 My field, the field of software development, feels disrupted. It feels like it is no longer the discipline it once was. There are too many people who have traded skills for salary. Just look at the number of people calling themselves “React Devs”. With these writings, I want to express myself, and if, for some reason, people find it helpful, I would enjoy that a lot.
