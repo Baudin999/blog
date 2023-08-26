@@ -1,3 +1,6 @@
+@use "sass:math";
+
+
 // Variables for consistent styling and easier theme updates
 $primary-font: Arial, sans-serif;
 $secondary-font: 'Georgia', serif;
@@ -25,14 +28,58 @@ $spacing-unit: 20px;
     h3 {
         font-size: 1.2em;
         color: $highlight-color;
-        margin-bottom: $spacing-unit / 2;
+        margin-bottom: math.div($spacing-unit, 2);
     }
 
     p {
-        margin-bottom: $spacing-unit / 2;
+        margin-bottom: math.div($spacing-unit, 2);
 
         &>strong {
             font-weight: bold;
         }
+    }
+}
+
+
+.narrator {
+    background-color: #F5E9D8; // The color of the scroll's paper
+    position: relative;
+    padding: 150px 20px; // 150px padding top and bottom, 20px left and right
+    min-height: 540px;
+    background-image: url('/blog/assets/img/scroll_middle.png');
+    background-repeat: no-repeat;
+    background-size: 100% calc(100% - 298px); // Ensuring the background is 300px less than full height
+    background-position: center center; // This centers the image
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 150px; // Adjust based on your images' heights
+        z-index: 99;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+    }
+
+    &:before {
+        top: 0;
+        background-image: url('/blog/assets/img/scroll_top.png');
+    }
+
+    &:after {
+        bottom: 0;
+        background-image: url('/blog/assets/img/scroll_bottom.png');
+    }
+
+    .dragon {
+        position: absolute;
+        top: 10%; // Adjust for your design
+        right: -70px; // Adjust based on your dragon image width
+        width: 60px; // Adjust based on your design
+        height: auto;
+        background: url('/blog/assets/img/dragon.jpg') no-repeat center center;
+        background-size: contain;
     }
 }
