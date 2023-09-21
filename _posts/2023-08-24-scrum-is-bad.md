@@ -229,9 +229,9 @@ employees who are trustworthy and who can inspire your organization. They will c
 will bring about a better community. 
 
 If you do not write code, you do not understand the complexity. I will give a bit of nuance. Everyone 
-who is envolved with the project should work with or on the project. This can be, but are not limited to: 
+who is involved with the project should work with or on the project. This can be, but are not limited to: 
 documentation, quality assurance, code or data. A product needs to be good, find people who will make the 
-product good, by loving the foundations of your product instead of the titles your organisation hands out.
+product good, by loving the foundations of your product instead of the titles your organization hands out.
 If you work this way, only features which excite the entire team can go forward. We do not need more 
 people mandating or speaking from authority. We need skilled people to be humble and enthusiastic.
 
@@ -240,7 +240,7 @@ to clean up. And by enforcing that we remove as well as add, we have a better ch
 
 The last two items are about your process. A process should help make something which works well, work better. 
 I've already said that, but it bears repeating. Please remove every process which does not add benefit, which
-hinders developers and which cost money. Focus on making your engineers even more effective!
+hinders developers and which costs money. Focus on making your engineers even more effective!
 
 ## Conclusion
 
