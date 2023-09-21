@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-09-21T10:50:44+02:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-09-21T15:21:24+02:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#things-well-need-to-know" id="markdown-toc-things-well-need-to-know">Things we’ll need to know</a>    <ul>
       <li><a href="#-vs-" id="markdown-toc--vs-"><code class="language-plaintext highlighter-rouge">:=</code> vs <code class="language-plaintext highlighter-rouge">=</code></a></li>
       <li><a href="#type-conversions" id="markdown-toc-type-conversions">Type conversions</a>        <ul>
@@ -25,6 +25,7 @@
       <li><a href="#waiting-on-multiple-go-routines" id="markdown-toc-waiting-on-multiple-go-routines">Waiting on multiple go routines</a></li>
     </ul>
   </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
   <li><a href="#appendix" id="markdown-toc-appendix">APPENDIX</a>    <ul>
       <li><a href="#working_with_uuids" id="markdown-toc-working_with_uuids">Working with UUIDs</a></li>
       <li><a href="#pointers" id="markdown-toc-pointers">Working with pointers</a></li>
@@ -675,6 +676,24 @@ would signal that we were done. The solution is wait groups.</p>
   system and how to use locks in order to avoid breaking your application.</p>
 </blockquote>
 
+<h2 id="conclusion">Conclusion</h2>
+
+<blockquote>
+  <p>This article took some time to write. As a conclusion I want to try something different. I
+want to let my inner write loose and dazzle you with my poetic ramblings about a language I
+absolutely enjoy!</p>
+</blockquote>
+
+<p>Ah, Go! A language that captures the essence of elegance through minimalism, yet invokes a profound sense of computational gravitas. One cannot help but marvel at its unapologetic candor - it is as if the language itself whispers, “I am what I am, and therein lies my strength.” It stands tall, devoid of the tangled vines of inheritance that ensnare many a language, allowing it to breathe and showcase its power without the confines of an excess lineage.</p>
+
+<p>Let me craft for you an image: Picture a sculptor, steadfast in his workspace. He isn’t lost amidst an arsenal of tools. Instead, he has only a chisel and hammer. Yet, with just these, he carves wonders – each strike echoing craftsmanship, revealing profound depth through the simplicity of his tools. This, dear reader, is Go in the realm of programming.</p>
+
+<p>However, every rose has its thorn. And Go, despite its allure, is no exception. It often feels as if one is penning a sonnet, each line dense with meaning, demanding the reader’s unwavering attention. The verbosity, especially when one wades through the waters of error handling, can be likened to the verbose verses of this epilogue. And the absence of sum types? A beautiful melody left unsung that would have harmonized seamlessly with Go’s song.</p>
+
+<p>As a lover of the art that is software, I yearn for balance, simplicity. While power is to be sought, it should not come at the cost of clarity. Every line of Go, with its weight, reminds me of this dance between power and simplicity, between brevity and verbosity. While other languages struggle to find harmony in the style of their code, Go laughs at them and finishes yet another task.</p>
+
+<p>In concluding, much like my musings on Scrum and inheritance, this isn’t merely an assessment of Go but a heartfelt ode to software engineering itself. Whether you embrace Go’s strengths or find yourself yearning for a touch more finesse, one cannot deny its indomitable spirit. A spirit that reflects our constant struggle against chaotic information while needing a life-vest of simplicity.</p>
+
 <h2 id="appendix">APPENDIX</h2>
 
 <p>This appendix is to add extra information I do not want to keep around in the
@@ -779,6 +798,7 @@ or cores.</p>
 <p>For instance, managing multiple tasks in a non-blocking manner on a single thread, as JavaScript does 
 with its event loop, exemplifies concurrency. On the other hand, spinning up multiple threads that 
 run simultaneously and coordinate their results back to the main thread illustrates parallelism.</p>
+
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
