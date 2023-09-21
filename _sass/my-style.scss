@@ -9,33 +9,41 @@ $secondary-color: #555; // Light grey
 $highlight-color: rgb(45, 16, 9); // Blue
 $spacing-unit: 20px;
 
-.resume-section {
-    background-color: #fff;
-    padding: $spacing-unit;
+.layout-resume {
 
-    h2 {
-        font-family: $secondary-font;
-        color: $highlight-color;
-        border-bottom: 2px solid $secondary-color;
-        padding-bottom: $spacing-unit / 2;
-        margin-bottom: $spacing-unit;
-    }
-}
-
-.resume-experience {
-    margin-top: $spacing-unit;
-
-    h3 {
-        font-size: 1.2em;
-        color: $highlight-color;
-        margin-bottom: math.div($spacing-unit, 2);
+    article {
+        margin-bottom: 0px;
     }
 
-    p {
-        margin-bottom: math.div($spacing-unit, 2);
+    .resume-section {
+        background-color: #fff;
+        padding: $spacing-unit;
 
-        &>strong {
-            font-weight: bold;
+        h2 {
+            font-family: $secondary-font;
+            color: $highlight-color;
+            border-bottom: 2px solid $secondary-color;
+            padding-bottom: math.div($spacing-unit, 2);
+            margin-bottom: $spacing-unit;
+            margin-top: math.div($spacing-unit, 2);
+        }
+    }
+
+    .resume-experience {
+        margin-top: math.div($spacing-unit, 2);
+
+        h3 {
+            font-size: 1.2em;
+            color: $highlight-color;
+            margin-bottom: math.div($spacing-unit, 2);
+        }
+
+        p {
+            margin-bottom: math.div($spacing-unit, 2);
+
+            &>strong {
+                font-weight: bold;
+            }
         }
     }
 }

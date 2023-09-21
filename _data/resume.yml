@@ -1,21 +1,29 @@
 name: Carlos Kelkboom
 
+about:
+  content: This is the content
+
 working_experience:
   - job_title: Technical Director
-    company: Aritificial Core
+    company: Artificial Core
     date: 2023 --
     location: Home, Netherlands
     responsibilities:
       - As a Technical Director I am helping the development of an MMO RPG called Corepunk. Creating an MMO 
         has focused all of my skills. Finding and hiring the right people, refactoring a legacy code-base and 
         helping the stakeholders make decisions like "which e-commerce platform should we use?"
-      - Creating game servers; I've prototyped and executed game servers in GoLang, Rust and C#
+      - Exploring new technologies and ways to solve solutions. Creating a MMO RPG is hard. It takes a lot
+        of technical trial and error to come up with a way to have hundreds, if not thousands, of players 
+        walking in the same shared world, enjoying the same shared content and having them carve their own
+        place to enjoy and immerse themselves. As a technical director I have explored all kinds of game 
+        servers and custom wrote at least three prototypes in C#, Rust and Go, in search of that novel server
+        which can host a lot of players and still be extremely responsive.
   - job_title: Technical Fellow
     company: Essent
     date: 2022 -- 2023
     location: Den Bosch, Netherlands
     responsibilities:
-      - Continued the architectural change I started as a System Architect but scaled to the entire organisation.
+      - Continued the architectural change I started as a System Architect but scaled to the entire organization.
       - Helping Essent focus on the craftsmanship of software development instead of the processes which drive it.
   - job_title: Architect
     company: Essent

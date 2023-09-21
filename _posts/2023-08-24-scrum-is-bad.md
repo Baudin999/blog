@@ -3,7 +3,7 @@ layout: post
 title: The failures of modern agile frameworks 
 author: Carlos Kelkboom
 date: 2023-08-24
-published: false
+published: true
 tags: Programming Agile
 ---
 
@@ -16,14 +16,13 @@ tags: Programming Agile
 Ah, Scrum! A topic that, for many, begins as an exhilarating breath of fresh air but can often leave a 
 bittersweet aftertaste. Reminiscent of how inheritance in object-oriented programming, with its initial 
 allure of structure and reusability, often masks complexities and muddles readability, Scrum, too, has 
-its own subtle deceptions. As inheritance can compromise code clarity, Scrum sometimes runs the risk of 
-overshadowing a fundamental truth: at its core, a project's success is anchored by competent engineers, 
-not just a framework.
+its own deceptions. As inheritance can compromise code clarity, Scrum runs the risk of 
+overshadowing a fundamental truth: at its core, a project's success is anchored in the competence of its engineers.
 
 let me give you an analogy: *Imagine a carpenter. This carpenter is really bad at his work. But, this 
 carpenter sees a book on Scrum and he loves it! He makes small iterations, he hires someone to plan 
-his work, he even hires someone who helps him face his bad products. All might seem good, until you 
-look at the products themselves. His skill had not increased, his products are still bad.*
+his work, he even hires someone who helps him face his bad products in a retrospective. All might seem good, 
+until you look at the products themselves. His skills have not changed, his products are still bad.*
 
 I know, after a rant about [inheritance](https://baudin999.github.io/blog/2023/08/24/inheritance-is-bad.html), I 
 now have the gall to rant about [Scrum](https://www.agilealliance.org/glossary/scrum/). I promise you
@@ -39,17 +38,17 @@ promised agility, adaptability, and results. And for a time, it seemed to delive
 Then commercial success kicked in, especially in the early 2000s. Courses, certifications, and consulting 
 services sprouted up. Everyone wanted a piece of the Agile pie, of which Scrum was a major slice. Today? 
 It's a multi-billion-dollar industry. And because of this, just like with most AAA games, greed overtakes
-the lofty goals of what Agile could have been.
+the lofty goals of what agile software development could have been.
 
-This article is about what is wrong with our modern approach to software development, it is a critique
-on Scrum and it's larger brother SAFe. It tells the story of why I have the practices, from the Scrum
+This article is about what is wrong with our modern approach to software development, it is a series of observations
+on Scrum and it's larger brother SAFe. It tells the story of why I hate these practices, from the Scrum
 boards offered by Atlassian to the need to have a PO and Scrum Master in every team. I will break down
 what is needed for a successful business and I will try to setup a simple framework which, in my humble
 opinion, is much better than Scrum.
 
-*\* If you feel offended by this remark, I invite you to plow thought the literature. There is not a
-single remark on the impact of a good engineer on the product. It is all about process. If you still 
-do not believe me, read the quotes the next chapter.*
+*\* If you feel offended by this remark, I invite you to plow thought the Scrum literature. There is not a
+single remark on the impact of a good engineer on the resulting product. It is all about process. If you still 
+do not believe me, read the quotes in the next chapter.*
 
 ## What is Scrum?
 
@@ -170,7 +169,7 @@ If you are still not convinced, please watch these videos by Dave Thomas and Mar
 
 ## Can Scrum work for you?
 The answer is, as always, "it depends". But it does not depend on anything you might hear advocates
-of scrum tell you. It depends on how senior the developers you have in your organisation are. If they
+of scrum tell you. It depends on how senior the developers you have in your organization are. If they
 know what they are doing and they take the parts of the process which add benefit to their workflow 
 and increase their effectiveness through that adoption, the answer is a resounding yes! But that has 
 nothing to do with Scrum and everything to do with the quality of the engineering.
@@ -178,10 +177,10 @@ nothing to do with Scrum and everything to do with the quality of the engineerin
 > A process should only make things which are good, better. A process can never be used to make
   something which fails, succeed.
 
-If you are working in a larger organisation and are working with scrum and you find the rituals and
+If you are working in a larger organization and are working with scrum and you find the rituals and
 processes comforting, you might think that I am looking at this in a biassed way. I am not. I am 
 looking at this from the perspective of the software. In the definitions it is stated that Scrum 
-helps an organisation focus on the product. If that is so, they must mean Scrum as a product, because
+helps an organization focus on the product. If that is so, they must mean Scrum as a product, because
 nothing in their definition states how to get to a good software product. They say nothing about the
 qualities of the engineers. They say nothing about the scope of a project or the trust the stakeholders
 need to let a team "code in peace". Nothing in their description is conducive to a well coded end-product
@@ -245,11 +244,11 @@ hinders developers and which cost money. Focus on making your engineers even mor
 
 ## Conclusion
 
-Scrum, the way it is marketed, the way it is sold, is horrible. Agile and Scrum as a methodology of
+Scrum, the way it is marketed, the way it is sold, is horrible. Agile software development and Scrum as a methodology of
 agile, is not. For the sake of this industry and the generations to come, who will need to work with the
 code and the products we create today, let's not blindly step into a methodology like scrum or SAFe, but
-let's be honest and talk about what really matters. It is not about a process, it's about the people
-making the products. 
+let's be honest and talk about what really matters. It is not about the process, it's about the people
+making the products.
 
 To finish the analogy I started at the beginning: *The carpenter would have been better off, just hiring a 
 good carpenter.*

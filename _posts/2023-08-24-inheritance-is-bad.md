@@ -160,6 +160,13 @@ tree; are too many to count. I like to see what something does. I want everythin
 a single file. I want to set a break-point or `printf` some debug info and know what is
 happening where.
 
+Look at this example:
+
+```csharp
+
+
+```
+
 #### The illusion of Reusability
 One of the main reasons developers opt for inheritance is reusability. While inheritance 
 can provide reusability, it often comes at the cost of flexibility. As shown in the example, 
