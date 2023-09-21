@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-09-21T10:16:13+02:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-09-21T10:50:44+02:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#things-well-need-to-know" id="markdown-toc-things-well-need-to-know">Things we’ll need to know</a>    <ul>
       <li><a href="#-vs-" id="markdown-toc--vs-"><code class="language-plaintext highlighter-rouge">:=</code> vs <code class="language-plaintext highlighter-rouge">=</code></a></li>
       <li><a href="#type-conversions" id="markdown-toc-type-conversions">Type conversions</a>        <ul>
@@ -1060,7 +1060,7 @@ good carpenter.</em></p>]]></content><author><name>Carlos Kelkboom</name></autho
 <a href="https://www.linkedin.com/posts/carlos-k-4016b8225_innovation-and-disruption-through-software-activity-7099278724696567808-wOij?utm_source=share&amp;utm_medium=member_desktop">linkedin</a></p>]]></content><author><name>Carlos Kelkboom</name></author><category term="Programming" /><category term="Personal" /><category term="Agile" /><summary type="html"><![CDATA[Hey everyone, I’ve had the tremendous honor and pleasure to have a conversation with 🎙Patrick Akil of Beyond Coding Podcast.]]></summary></entry><entry><title type="html">Inheritance is bad</title><link href="https://baudin999.github.io/blog//blog/2023/08/24/inheritance-is-bad.html" rel="alternate" type="text/html" title="Inheritance is bad" /><published>2023-08-24T00:00:00+02:00</published><updated>2023-08-24T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/24/inheritance-is-bad</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/24/inheritance-is-bad.html"><![CDATA[<p>I hate inheritance! There, I’ve said it. It’s true, I absolutely hate it. Inheritance destroys any
 chance you have of understanding your code. And it always starts with such good intentions. You start
 by defining a bit of functionality. Now you add another class and you see that same functionality 
-happening in two places. Before you actually realise what has happened, you now have a base class
+happening in two places. Before you actually realize what has happened, you now have a base class
 and two concrete classes. Life seems good right?</p>
 
 <p>Unfortunately, it never ends there. Your program always changes, and the base class which seemed to
@@ -1207,15 +1207,90 @@ happening where.</p>
 
 <p>Look at this example:</p>
 
-<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<p>Imagine you’re working on a game where creatures have hit points (<code class="language-plaintext highlighter-rouge">hp</code>) and can take damage. 
+You decide to model this with a base <code class="language-plaintext highlighter-rouge">Creature</code> class.</p>
 
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Creature</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="kt">int</span> <span class="n">hp</span> <span class="p">=</span> <span class="m">100</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">TakeDamage</span><span class="p">(</span><span class="kt">int</span> <span class="n">damage</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">hp</span> <span class="p">-=</span> <span class="n">damage</span><span class="p">;</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"Creature took </span><span class="p">{</span><span class="n">damage</span><span class="p">}</span><span class="s"> damage. HP left: </span><span class="p">{</span><span class="n">hp</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>You then create a subclass <code class="language-plaintext highlighter-rouge">Warrior</code> that inherits from <code class="language-plaintext highlighter-rouge">Creature</code>. This subclass has a special 
+ability to mitigate a portion of incoming damage.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Warrior</span> <span class="p">:</span> <span class="n">Creature</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">armor</span> <span class="p">=</span> <span class="m">0.2f</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">TakeDamage</span><span class="p">(</span><span class="kt">int</span> <span class="n">damage</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">remainingDamage</span> <span class="p">=</span> <span class="n">damage</span> <span class="p">*</span> <span class="n">armor</span><span class="p">;</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">TakeDamage</span><span class="p">(</span><span class="n">remainingDamage</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>This seems straightforward. If a warrior takes damage, it first reduces the damage by its armor 
+value and then calls the base <code class="language-plaintext highlighter-rouge">TakeDamage</code> method.</p>
+
+<p>Now, another developer on your team, not fully aware of the <code class="language-plaintext highlighter-rouge">Warrior</code> class’s overridden behavior, 
+decides to add a new feature to the Creature class to increase the damage if the creature’s hp is 
+below a threshold:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">TakeDamage</span><span class="p">(</span><span class="kt">int</span> <span class="n">damage</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">damage</span> <span class="p">&lt;</span> <span class="m">50</span><span class="p">)</span>
+        <span class="n">damage</span> <span class="p">+=</span> <span class="m">10</span><span class="p">;</span>  <span class="c1">// Add bonus damage if hp is below 50</span>
+
+    <span class="n">hp</span> <span class="p">-=</span> <span class="n">damage</span><span class="p">;</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"Creature took </span><span class="p">{</span><span class="n">damage</span><span class="p">}</span><span class="s"> damage. HP left: </span><span class="p">{</span><span class="n">hp</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>However, with the Warrior’s current overridden method, this new behavior is forced to be applied after
+the armor has mitigated some of the damage, making sure that the warrior will suffer the +10 dmg more
+than other classes without armor.</p>
+
+<p>This example clearly shows how your logic becomes less transparent when you stack functionality like this.
+A better way of doing this would be to use composition:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Calculations</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">TakeDamage</span><span class="p">(</span><span class="kt">int</span> <span class="n">damage</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">damage</span> <span class="p">&lt;</span> <span class="m">50</span><span class="p">)</span>
+            <span class="n">damage</span> <span class="p">+=</span> <span class="m">10</span><span class="p">;</span>  <span class="c1">// Add bonus damage if hp is below 50</span>
+
+        <span class="k">return</span> <span class="n">damage</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Warrior</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Hp</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">armor</span> <span class="p">=</span> <span class="m">0.2f</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="kt">float</span> <span class="nf">armorReduction</span><span class="p">(</span><span class="kt">int</span> <span class="n">damage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">damage</span> <span class="p">*</span> <span class="n">armor</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">TakeDamage</span><span class="p">(</span><span class="kt">int</span> <span class="n">damage</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">remainingDamage</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">armorReduction</span><span class="p">(</span><span class="n">damage</span><span class="p">);</span>
+        <span class="n">Hp</span> <span class="p">-=</span> <span class="n">Calculations</span><span class="p">.</span><span class="nf">TakeDamage</span><span class="p">(</span><span class="n">remainingDamage</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <h4 id="the-illusion-of-reusability">The illusion of Reusability</h4>
 <p>One of the main reasons developers opt for inheritance is reusability. While inheritance 
 can provide reusability, it often comes at the cost of flexibility. As shown in the example, 
 it’s much cleaner to use composition where each class or trait does one thing and does it
-well. It is easier to reuse a small, well-defined component than a large, monolithic one.</p>
+well. It is easier to reuse a small, well-defined component than a large, spaghetti one.</p>
 
 <p>Reuse comes in multiple forms, reuse of data and reuse of functionality. When you reuse data
 you are reusing information either to display it differently, or to act upon differently.
@@ -1289,12 +1364,12 @@ as a parameter.</p>
         <span class="n">_sender</span> <span class="p">=</span> <span class="n">sender</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="nf">SendMessage</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="n">Task</span> <span class="nf">SendMessage</span><span class="p">()</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="n">payload</span> <span class="p">=</span> <span class="nf">Serialize</span><span class="p">();</span>
         <span class="k">return</span> <span class="n">_sender</span><span class="p">.</span><span class="nf">Send</span><span class="p">(</span><span class="n">Url</span><span class="p">,</span> <span class="n">payload</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="nf">Serialize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Serialize</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Implementation for Player class.</span>
         <span class="c1">// For now, return a placeholder string.</span>
         <span class="k">return</span> <span class="s">"Serialized Player Data"</span><span class="p">;</span>
@@ -1442,7 +1517,7 @@ our system that needs these properties can simply inherit from Entity.</p>
 The key is understanding when and how to use it effectively. For behavior-based functionality, composition, 
 interfaces, and other patterns usually offer a more flexible and maintainable approach. But for pure data 
 classes where there’s a clear, shared set of attributes across multiple objects, inheritance can be a 
-practical solution. Just be sure always to use it judiciously and remain mindful of its potential pitfalls.</p>]]></content><author><name>Carlos Kelkboom</name></author><category term="Programming" /><category term="OOP" /><summary type="html"><![CDATA[I hate inheritance! There, I’ve said it. It’s true, I absolutely hate it. Inheritance destroys any chance you have of understanding your code. And it always starts with such good intentions. You start by defining a bit of functionality. Now you add another class and you see that same functionality happening in two places. Before you actually realise what has happened, you now have a base class and two concrete classes. Life seems good right?]]></summary></entry><entry><title type="html">Hello, World</title><link href="https://baudin999.github.io/blog//blog/2023/08/23/hello-world.html" rel="alternate" type="text/html" title="Hello, World" /><published>2023-08-23T00:00:00+02:00</published><updated>2023-08-23T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/23/hello-world</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/23/hello-world.html"><![CDATA[<p>Writing and blogging have always been incredibly important. Most of the things I’ve learned have been through a medium like this. Of course, I have learned a lot from watching YouTube videos or conversing with colleagues, but the written medium stands out like no other. After two decades in this business, I am ready to contribute to the conversation.</p>
+practical solution. Just be sure always to use it judiciously and remain mindful of its potential pitfalls.</p>]]></content><author><name>Carlos Kelkboom</name></author><category term="Programming" /><category term="OOP" /><summary type="html"><![CDATA[I hate inheritance! There, I’ve said it. It’s true, I absolutely hate it. Inheritance destroys any chance you have of understanding your code. And it always starts with such good intentions. You start by defining a bit of functionality. Now you add another class and you see that same functionality happening in two places. Before you actually realize what has happened, you now have a base class and two concrete classes. Life seems good right?]]></summary></entry><entry><title type="html">Hello, World</title><link href="https://baudin999.github.io/blog//blog/2023/08/23/hello-world.html" rel="alternate" type="text/html" title="Hello, World" /><published>2023-08-23T00:00:00+02:00</published><updated>2023-08-23T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/23/hello-world</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/23/hello-world.html"><![CDATA[<p>Writing and blogging have always been incredibly important. Most of the things I’ve learned have been through a medium like this. Of course, I have learned a lot from watching YouTube videos or conversing with colleagues, but the written medium stands out like no other. After two decades in this business, I am ready to contribute to the conversation.</p>
 
 <p>My field, the field of software development, feels disrupted. It feels like it is no longer the discipline it once was. There are too many people who have traded skills for salary. Just look at the number of people calling themselves “React Devs”. With these writings, I want to express myself, and if, for some reason, people find it helpful, I would enjoy that a lot.</p>
 
