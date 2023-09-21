@@ -673,6 +673,22 @@ func main() {
   I will go deeper into what that means, how to use it in a larger
   system and how to use locks in order to avoid breaking your application.
 
+## Conclusion
+
+> This article took some time to write. As a conclusion I want to try something different. I
+want to let my inner write loose and dazzle you with my poetic ramblings about a language I
+absolutely enjoy!
+
+Ah, Go! A language that captures the essence of elegance through minimalism, yet invokes a profound sense of computational gravitas. One cannot help but marvel at its unapologetic candor - it is as if the language itself whispers, "I am what I am, and therein lies my strength." It stands tall, devoid of the tangled vines of inheritance that ensnare many a language, allowing it to breathe and showcase its power without the confines of an excess lineage.
+
+Let me craft for you an image: Picture a sculptor, steadfast in his workspace. He isn’t lost amidst an arsenal of tools. Instead, he has only a chisel and hammer. Yet, with just these, he carves wonders – each strike echoing craftsmanship, revealing profound depth through the simplicity of his tools. This, dear reader, is Go in the realm of programming.
+
+However, every rose has its thorn. And Go, despite its allure, is no exception. It often feels as if one is penning a sonnet, each line dense with meaning, demanding the reader's unwavering attention. The verbosity, especially when one wades through the waters of error handling, can be likened to the verbose verses of this epilogue. And the absence of sum types? A beautiful melody left unsung that would have harmonized seamlessly with Go’s song.
+
+As a lover of the art that is software, I yearn for balance, simplicity. While power is to be sought, it should not come at the cost of clarity. Every line of Go, with its weight, reminds me of this dance between power and simplicity, between brevity and verbosity. While other languages struggle to find harmony in the style of their code, Go laughs at them and finishes yet another task.
+
+In concluding, much like my musings on Scrum and inheritance, this isn’t merely an assessment of Go but a heartfelt ode to software engineering itself. Whether you embrace Go’s strengths or find yourself yearning for a touch more finesse, one cannot deny its indomitable spirit. A spirit that reflects our constant struggle against chaotic information while needing a life-vest of simplicity.
+
 ## APPENDIX
 
 This appendix is to add extra information I do not want to keep around in the
@@ -786,3 +802,5 @@ Go is adept at handling both scenarios. It's vital to understand the difference:
 For instance, managing multiple tasks in a non-blocking manner on a single thread, as JavaScript does 
 with its event loop, exemplifies concurrency. On the other hand, spinning up multiple threads that 
 run simultaneously and coordinate their results back to the main thread illustrates parallelism.
+
+
