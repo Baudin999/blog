@@ -10,7 +10,7 @@ tags: Programming OOP
 I hate inheritance! There, I've said it. It's true, I absolutely hate it. Inheritance destroys any
 chance you have of understanding your code. And it always starts with such good intentions. You start
 by defining a bit of functionality. Now you add another class and you see that same functionality 
-happening in two places. Before you actually realise what has happened, you now have a base class
+happening in two places. Before you actually realize what has happened, you now have a base class
 and two concrete classes. Life seems good right?
 
 Unfortunately, it never ends there. Your program always changes, and the base class which seemed to
@@ -162,16 +162,97 @@ happening where.
 
 Look at this example:
 
+Imagine you're working on a game where creatures have hit points (`hp`) and can take damage. 
+You decide to model this with a base `Creature` class.
+
+
 ```csharp
+public class Creature
+{
+    protected int hp = 100;
 
-
+    public virtual void TakeDamage(int damage)
+    {
+        hp -= damage;
+        Console.WriteLine($"Creature took {damage} damage. HP left: {hp}");
+    }
+}
 ```
+You then create a subclass `Warrior` that inherits from `Creature`. This subclass has a special 
+ability to mitigate a portion of incoming damage.
+
+```csharp
+public class Warrior : Creature
+{
+    private int armor = 0.2f;
+
+    public override void TakeDamage(int damage)
+    {
+        int remainingDamage = damage * armor;
+        base.TakeDamage(remainingDamage);
+    }
+}
+```
+This seems straightforward. If a warrior takes damage, it first reduces the damage by its armor 
+value and then calls the base `TakeDamage` method.
+
+Now, another developer on your team, not fully aware of the `Warrior` class's overridden behavior, 
+decides to add a new feature to the Creature class to increase the damage if the creature's hp is 
+below a threshold:
+
+```csharp
+public virtual void TakeDamage(int damage)
+{
+    if (damage < 50)
+        damage += 10;  // Add bonus damage if hp is below 50
+
+    hp -= damage;
+    Console.WriteLine($"Creature took {damage} damage. HP left: {hp}");
+}
+```
+
+However, with the Warrior's current overridden method, this new behavior is forced to be applied after
+the armor has mitigated some of the damage, making sure that the warrior will suffer the +10 dmg more
+than other classes without armor.
+
+This example clearly shows how your logic becomes less transparent when you stack functionality like this.
+A better way of doing this would be to use composition:
+
+
+```csharp
+public static class Calculations {
+    public static int TakeDamage(int damage)
+    {
+        if (damage < 50)
+            damage += 10;  // Add bonus damage if hp is below 50
+
+        return damage;
+    }
+}
+
+public class Warrior
+{
+    public int Hp {get;set;}
+    private int armor = 0.2f;
+
+    private float armorReduction(int damage) {
+        return damage * armor;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        var remainingDamage = (int)armorReduction(damage);
+        Hp -= Calculations.TakeDamage(remainingDamage);
+    }
+}
+```
+
 
 #### The illusion of Reusability
 One of the main reasons developers opt for inheritance is reusability. While inheritance 
 can provide reusability, it often comes at the cost of flexibility. As shown in the example, 
 it's much cleaner to use composition where each class or trait does one thing and does it
-well. It is easier to reuse a small, well-defined component than a large, monolithic one.
+well. It is easier to reuse a small, well-defined component than a large, spaghetti one.
 
 Reuse comes in multiple forms, reuse of data and reuse of functionality. When you reuse data
 you are reusing information either to display it differently, or to act upon differently.
@@ -248,12 +329,12 @@ public class Player : IMessage {
         _sender = sender;
     }
 
-    public virtual Task SendMessage() {
+    public Task SendMessage() {
         string payload = Serialize();
         return _sender.Send(Url, payload);
     }
 
-    public virtual string Serialize() {
+    public string Serialize() {
         // Implementation for Player class.
         // For now, return a placeholder string.
         return "Serialized Player Data";
