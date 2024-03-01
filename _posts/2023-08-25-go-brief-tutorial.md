@@ -34,7 +34,7 @@ the `=`. The difference is simple:
 * `:=` define the variable and assign a value immediately
 
 Remember that programs are concerned with memory, if I want to retrieve the 
-value of an `int32` I know that I need to start somewhere and retrieve the 
+value of an `int32`, I know that I need to start somewhere and retrieve the 
 next 32 bits. This is why we declare a variable beforehand, preparing the 
 runtime to allocate a specific amount of memory like so:
 
