@@ -14,16 +14,19 @@ happening in two places. Before you actually realize what has happened, you now 
 and two concrete classes. Life seems good right?
 
 Unfortunately, it never ends there. Your program always changes, and the base class which seemed to
-give you standard functionality is now hindering you. I am not sure if examples are going to help
-with illustrating this point, because it is very hard to see an example of evolving code. It's the 
-insidiousness of inheritance, it looks beautiful in an example, but it destroys productivity in 
-real life. 
+give you standard functionality is now hindering you, even actively hiding crucial implementation details. 
+I am not sure if examples are going to help with illustrating this point, because it is very hard 
+to see an example of evolving code. It's the insidiousness of inheritance, it looks beautiful in 
+an example, but it destroys productivity in real life. 
 
 Still, let me try:
 
 ```csharp
 public class Message {
     public string Url { get; }
+    public Message(string url) {
+        Url = url;
+    }
     public Task Send() {
         // send the message
     }
@@ -43,22 +46,22 @@ public class LogMessage : Message {
 ```
 
 This seems great right? We can now send random classes to the server! That sounds like a great plan!
-But it is not, what we have done is, we've tightly coupled the `Player` class to a `Message`. What we 
-are trying to do is that we're trying to add functionality to the classes which it should not have. 
+But it is not, what we have done is, we've tightly coupled the `Player` and `LogMessage` classes to a `Message`. 
+What we are trying to do is that we're trying to add functionality to s class which it should not have. 
 
 ## Purpose is everything
 The `Player` class has a purpose. It's to give my game some information about the player. For example:
-the handle, the last time they played, the last character they selected. This is the goal of the `Player`
+the handle (nickname), the last time they played, the last character they selected. This is the goal of the `Player`
 class. 
 
 We will also need to sync that data between server and client. This is what your networking code is for.
 It is not that the `Player` class cannot and should not be used as a message. It's that it's not it's
-responsibility. By giving the `Player` class the responsibility of being able to send itself, we tightly
+*responsibility*. By giving the `Player` class the responsibility of being able to send itself, we tightly
 couple functionalities. 
 
 So, how can we solve this? We solve this by designing the system differently. Instead of inheritance we
-use a concept called *composition*. A very clean approach to this is a *traits* system. It's clean, it's
-super and it's easy to understand. Here's a bit of rust showing the power of the trait system:
+use a concept called *composition*. A very clean approach to this is a *traits* system. It's clean and it's 
+easy to understand. Here's a bit of rust showing the power of the trait system:
 
 We define our classes, notice how there is no information about the url in the struct:
 
@@ -92,12 +95,13 @@ impl SendMessage for LogMessage {
 }
 ```
 You can even define these traits in a separate module to keep things tight and clean.
-We have moved the url to the implementation of the trait, could this be even cleaner?
-Of course, but this code serves the purpose of telling the story, everything related
-to sending a `struct` to the server is contained in the implementation of the trait 
+We have moved the url to the implementation of the trait. 
+
+Could this be even cleaner? Of course, but this code serves the purpose of telling the story, 
+everything related to sending a `struct` to the server is contained in the implementation of the trait 
 and is not scattered into my business object.
 
-I would use this something like:
+The code we just wrote in rust can be used like this:
 
 ```rust
 fn main() {
@@ -130,7 +134,7 @@ responsibilities and violate the
 
 For me, this SRP is the single most important guideline against complexity. A large
 system is very complex, if your objects have a lot of responsibilities it will be
-extremely difficult to change the system. If your object do only one thing, this will
+extremely difficult to change the system. If your objects do only one thing, this will
 become a lot easier.
 
 Before we go into the details of how inheritance make changing code extremely difficult, 
@@ -149,18 +153,23 @@ class inheriting from that base class. This breaks my guideline.
 
 #### Information hiding
 Inheritance often hides dependencies and through that, information. When you inherit from 
-a base class, you might inadvertently inherit behaviors that aren't immediately visible. 
+a base class, you might inadvertently inherit behaviors that aren't immediately visible, or relevant. 
 These hidden behaviors can introduce bugs that are hard to trace because they don't 
 originate from the derived class's code but from somewhere up the inheritance chain.
 
 It also, literally, hides information. The number of times I have stared at a piece of 
 code, amazed at the bug and wondering where it came from, only to discover that the 
 actual code which is wreaking havoc on my product is hidden deeply in a inheritance
-tree; are too many to count. I like to see what something does. I want everything in 
-a single file. I want to set a break-point or `printf` some debug info and know what is
-happening where.
+tree; are too many to count. 
+
+When I read code, I like to see what something does. I want everything in a single file. 
+I want to set a break-point or `printf` some debug info and know what is happening.
 
 Look at this example:
+
+> Giving examples of why inheritance is bad is extremely difficult, I am trying to create meaningful examples, but they will always feel *fake*. 
+> You should think about a software system as an evolving beast. Always changing. With each change we evolve the system into a direction it might not
+> have been meant to go. This is where "I like to see what something does" comes from.
 
 Imagine you're working on a game where creatures have hit points (`hp`) and can take damage. 
 You decide to model this with a base `Creature` class.
@@ -212,8 +221,8 @@ public virtual void TakeDamage(int damage)
 ```
 
 However, with the Warrior's current overridden method, this new behavior is forced to be applied after
-the armor has mitigated some of the damage, making sure that the warrior will suffer the +10 dmg more
-than other classes without armor.
+the armor has mitigated some of the damage, making sure that the warrior will suffer the full +10 dmg, 
+while it should only suffer 8.
 
 This example clearly shows how your logic becomes less transparent when you stack functionality like this.
 A better way of doing this would be to use composition:
@@ -241,25 +250,32 @@ public class Warrior
 
     public void TakeDamage(int damage)
     {
-        var remainingDamage = (int)armorReduction(damage);
-        Hp -= Calculations.TakeDamage(remainingDamage);
+        var dmg = Calculations.TakeDamage(damage);
+        Hp -= (int)armorReduction(dmg);
     }
 }
 ```
 
+> Note on Traits: While traits in rust are an awesome way to split data from functionality, they are 
+> not the only way. In C# you can use interfaces, or as I did in my implementation, split the functionality
+> into stateless methods and apply the transformations inside those methods.
+
 
 #### The illusion of Reusability
 One of the main reasons developers opt for inheritance is reusability. While inheritance 
-can provide reusability, it often comes at the cost of flexibility. As shown in the example, 
+can provide reusability, it often comes at the cost of flexibility, making your implementation rigid. As shown in the example, 
 it's much cleaner to use composition where each class or trait does one thing and does it
 well. It is easier to reuse a small, well-defined component than a large, spaghetti one.
 
 Reuse comes in multiple forms, reuse of data and reuse of functionality. When you reuse data
 you are reusing information either to display it differently, or to act upon differently.
 This is not bad, it is easy to refactor and easy to maintain. Reuse of functionality leads
-to all manner of type information being spread throughout the code. Generics, Generic type
-guards and interfaces all pop up because we want to reuse. All of these features make 
-refactoring your code a lot harder than it needs to be.
+to all manner of type information being spread throughout the code. 
+
+A great example of reuse being both a blessing and a curse are Generics. A generic type
+is a type which is substituted for a concrete type at either runtime or compile time. 
+But, just because you are using generics, you now have to worry about guards. It almost
+seems like we're coding a meta language instead of developing te actual feature.
 
 #### Example of frailty
 
@@ -270,21 +286,35 @@ for authentication.
 We would write something like:
 
 ```csharp
+public class Player {
+    protected string url = "/player";
+
+    public virtual Task Send() {
+        Console.WriteLine($"Sending message to {url}");
+        // Simulate sending logic
+        return Task.CompletedTask;
+    }
+}
+
 public class PremiumPlayer : Player {
     private const string premiumUrl = "/premium-player";
-    public string AuthenticationHeader { get; }
+    public string AuthenticationHeader { get; private set; }
 
-    public PremiumPlayer(string authHeader) : base(premiumUrl) {
+    public PremiumPlayer(string authHeader) : base() {
+        this.url = premiumUrl;  // Update URL for premium players
         this.AuthenticationHeader = authHeader;
     }
 
     // Overriding Send method to include the new header
     public override Task Send() {
-        // include the AuthenticationHeader
-        // send the message
+        Console.WriteLine($"Sending message to {url} with auth header {AuthenticationHeader}");
+        // Simulate sending logic with authentication
+        return Task.CompletedTask;
     }
 }
+
 ```
+
 By overriding the Send method, we now bypass the original implementation and have forced
 the code to behave differently. We can still use the `PremiumPlayer` as if it is a `Player`
 because of polymorphism. But we can no longer clearly see what is happening. If we want
@@ -364,11 +394,13 @@ public class PremiumPlayer : IMessage {
 }
 ```
 
-We are passing the `IMessageSender` to the `IMessage` class and with that service we are injecting
-we can send the message. This is a more natural way of writing the code. I still do not like it
-that the `Player` and `PremiumPlayer` classes have these methods which are strictly for sending them, 
-like the `SendMessage` method and the `Serialize` method, but at least they belong to the `IMessage`
-interface and not longer to the class itself.
+We are passing the `IMessageSender` to the `IMessage` class and with that service we can execute the send message. 
+This is a more natural way of writing the code. I still do not like it that the `Player` and `PremiumPlayer` classes 
+have these methods which are strictly for sending them, like the `SendMessage` method and the `Serialize` method, 
+but at least they belong to the `IMessage` interface and not longer to the class itself.
+
+I would love to invert the dependencies so that the `IMessage` does not have a dependency on the `IMessageSender`!
+The next part will try to give an example of this.
 
 ### Layers or Services
 Another way to structure this is by making the `MessageSender.Send` a function we can call with
@@ -444,7 +476,7 @@ public class PlayerService {
 
 This comes a lot closer to a nice separation of concerns. One other thing to notice is that 
 I do not have to use interfaces. I just pass in the actual classes. The code is so simple that
-I even have a hard time advocating for a lot of tests. I would however run large integration
+I even have a hard time advocating for a lot of unit tests. I would, however, run large integration
 and black box tests in a system like this.
 
 ## Should you really never use inheritance?

@@ -39,7 +39,7 @@ Drawing from multiple agile software development practices, I tailored a methodo
 ## Version Control Simplified
 Our Git structure is designed for clarity:
 
-We keep everything in feature/name-of-feature branches.
+We keep everything in `feature/name-of-feature` branches.
 Before any merge to the master, we first merge the master into the feature branch.
 Release-specific fixes are diligently applied both to release branches and the master.
 Documentation: Tiered and Transparent

@@ -28,7 +28,7 @@ Right now, I'm exploring the expansive universe of [Corepunk](https://corepunk.c
   
 - **Scrum**: More harm than good, where agile focused on building software, srum focusses on "process over development". 
   
-- **Testing & TDD**: Love the former, not too keen on the latter. Testing is like making sure the parachute works. TDD? testing the air to check if the parachute will work, please don't do that! 
+- **Testing & TDD**: Love the former, not too keen on the latter. Testing is like making sure the parachute works. TDD? It's like testing the air to check if the parachute will work, please don't do that! (Unless you're destination is Mars of course...) 
 
 ---
 

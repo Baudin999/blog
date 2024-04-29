@@ -29,6 +29,10 @@ hide_description=page.hide_description %}
             {% for responsibility in experience.responsibilities %}
             <p>{{ responsibility }}</p>
             {% endfor %}
+            {% if experience.link %}
+            <p>Further reading: <a href="{{ '/blog/extra/' | append: experience.link.ref }}">{{
+                    experience.link.title }}</a></p>
+            {% endif %}
         </div>
         {% endfor %}
     </section>

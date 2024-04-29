@@ -8,6 +8,9 @@ working_experience:
     company: Artificial Core
     date: 2023 --
     location: Home, Netherlands
+    link:
+        title: Technical Director at Artificial Core
+        ref: 2024-03-01-td
     responsibilities:
       - As a Technical Director I am helping the development of an MMO RPG called Corepunk. Creating an MMO 
         has focused all of my skills. Finding and hiring the right people, refactoring a legacy code-base and 

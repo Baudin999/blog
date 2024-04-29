@@ -18,6 +18,8 @@ url: "https://baudin999.github.io/blog/" # the base hostname & protocol for your
 github_username: Baudin999 
 linkedin: https://www.linkedin.com/in/carlos-k-4016b8225/
 github: https://github.com/baudin999
+include:
+    - extra
 
 hydejack:
   dark_mode:
