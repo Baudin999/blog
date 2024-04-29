@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-09-21T15:21:24+02:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-04-29T08:29:34+02:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#things-well-need-to-know" id="markdown-toc-things-well-need-to-know">Things we’ll need to know</a>    <ul>
       <li><a href="#-vs-" id="markdown-toc--vs-"><code class="language-plaintext highlighter-rouge">:=</code> vs <code class="language-plaintext highlighter-rouge">=</code></a></li>
       <li><a href="#type-conversions" id="markdown-toc-type-conversions">Type conversions</a>        <ul>
@@ -65,7 +65,7 @@ the <code class="language-plaintext highlighter-rouge">=</code>. The difference 
 </ul>
 
 <p>Remember that programs are concerned with memory, if I want to retrieve the 
-value of an <code class="language-plaintext highlighter-rouge">int32</code> I know that I need to start somewhere and retrieve the 
+value of an <code class="language-plaintext highlighter-rouge">int32</code>, I know that I need to start somewhere and retrieve the 
 next 32 bits. This is why we declare a variable beforehand, preparing the 
 runtime to allocate a specific amount of memory like so:</p>
 
@@ -1084,15 +1084,18 @@ happening in two places. Before you actually realize what has happened, you now 
 and two concrete classes. Life seems good right?</p>
 
 <p>Unfortunately, it never ends there. Your program always changes, and the base class which seemed to
-give you standard functionality is now hindering you. I am not sure if examples are going to help
-with illustrating this point, because it is very hard to see an example of evolving code. It’s the 
-insidiousness of inheritance, it looks beautiful in an example, but it destroys productivity in 
-real life.</p>
+give you standard functionality is now hindering you, even actively hiding crucial implementation details. 
+I am not sure if examples are going to help with illustrating this point, because it is very hard 
+to see an example of evolving code. It’s the insidiousness of inheritance, it looks beautiful in 
+an example, but it destroys productivity in real life.</p>
 
 <p>Still, let me try:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Message</span> <span class="p">{</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Url</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="nf">Message</span><span class="p">(</span><span class="kt">string</span> <span class="n">url</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Url</span> <span class="p">=</span> <span class="n">url</span><span class="p">;</span>
+    <span class="p">}</span>
     <span class="k">public</span> <span class="n">Task</span> <span class="nf">Send</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// send the message</span>
     <span class="p">}</span>
@@ -1112,22 +1115,22 @@ real life.</p>
 </code></pre></div></div>
 
 <p>This seems great right? We can now send random classes to the server! That sounds like a great plan!
-But it is not, what we have done is, we’ve tightly coupled the <code class="language-plaintext highlighter-rouge">Player</code> class to a <code class="language-plaintext highlighter-rouge">Message</code>. What we 
-are trying to do is that we’re trying to add functionality to the classes which it should not have.</p>
+But it is not, what we have done is, we’ve tightly coupled the <code class="language-plaintext highlighter-rouge">Player</code> and <code class="language-plaintext highlighter-rouge">LogMessage</code> classes to a <code class="language-plaintext highlighter-rouge">Message</code>. 
+What we are trying to do is that we’re trying to add functionality to s class which it should not have.</p>
 
 <h2 id="purpose-is-everything">Purpose is everything</h2>
 <p>The <code class="language-plaintext highlighter-rouge">Player</code> class has a purpose. It’s to give my game some information about the player. For example:
-the handle, the last time they played, the last character they selected. This is the goal of the <code class="language-plaintext highlighter-rouge">Player</code>
+the handle (nickname), the last time they played, the last character they selected. This is the goal of the <code class="language-plaintext highlighter-rouge">Player</code>
 class.</p>
 
 <p>We will also need to sync that data between server and client. This is what your networking code is for.
 It is not that the <code class="language-plaintext highlighter-rouge">Player</code> class cannot and should not be used as a message. It’s that it’s not it’s
-responsibility. By giving the <code class="language-plaintext highlighter-rouge">Player</code> class the responsibility of being able to send itself, we tightly
+<em>responsibility</em>. By giving the <code class="language-plaintext highlighter-rouge">Player</code> class the responsibility of being able to send itself, we tightly
 couple functionalities.</p>
 
 <p>So, how can we solve this? We solve this by designing the system differently. Instead of inheritance we
-use a concept called <em>composition</em>. A very clean approach to this is a <em>traits</em> system. It’s clean, it’s
-super and it’s easy to understand. Here’s a bit of rust showing the power of the trait system:</p>
+use a concept called <em>composition</em>. A very clean approach to this is a <em>traits</em> system. It’s clean and it’s 
+easy to understand. Here’s a bit of rust showing the power of the trait system:</p>
 
 <p>We define our classes, notice how there is no information about the url in the struct:</p>
 
@@ -1158,12 +1161,13 @@ super and it’s easy to understand. Here’s a bit of rust showing the power of
 <span class="p">}</span>
 </code></pre></div></div>
 <p>You can even define these traits in a separate module to keep things tight and clean.
-We have moved the url to the implementation of the trait, could this be even cleaner?
-Of course, but this code serves the purpose of telling the story, everything related
-to sending a <code class="language-plaintext highlighter-rouge">struct</code> to the server is contained in the implementation of the trait 
+We have moved the url to the implementation of the trait.</p>
+
+<p>Could this be even cleaner? Of course, but this code serves the purpose of telling the story, 
+everything related to sending a <code class="language-plaintext highlighter-rouge">struct</code> to the server is contained in the implementation of the trait 
 and is not scattered into my business object.</p>
 
-<p>I would use this something like:</p>
+<p>The code we just wrote in rust can be used like this:</p>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">let</span> <span class="n">player_msg</span> <span class="o">=</span> <span class="n">Player</span><span class="p">;</span>
@@ -1195,7 +1199,7 @@ responsibilities and violate the
 
 <p>For me, this SRP is the single most important guideline against complexity. A large
 system is very complex, if your objects have a lot of responsibilities it will be
-extremely difficult to change the system. If your object do only one thing, this will
+extremely difficult to change the system. If your objects do only one thing, this will
 become a lot easier.</p>
 
 <p>Before we go into the details of how inheritance make changing code extremely difficult, 
@@ -1214,18 +1218,25 @@ class inheriting from that base class. This breaks my guideline.</p>
 
 <h4 id="information-hiding">Information hiding</h4>
 <p>Inheritance often hides dependencies and through that, information. When you inherit from 
-a base class, you might inadvertently inherit behaviors that aren’t immediately visible. 
+a base class, you might inadvertently inherit behaviors that aren’t immediately visible, or relevant. 
 These hidden behaviors can introduce bugs that are hard to trace because they don’t 
 originate from the derived class’s code but from somewhere up the inheritance chain.</p>
 
 <p>It also, literally, hides information. The number of times I have stared at a piece of 
 code, amazed at the bug and wondering where it came from, only to discover that the 
 actual code which is wreaking havoc on my product is hidden deeply in a inheritance
-tree; are too many to count. I like to see what something does. I want everything in 
-a single file. I want to set a break-point or <code class="language-plaintext highlighter-rouge">printf</code> some debug info and know what is
-happening where.</p>
+tree; are too many to count.</p>
+
+<p>When I read code, I like to see what something does. I want everything in a single file. 
+I want to set a break-point or <code class="language-plaintext highlighter-rouge">printf</code> some debug info and know what is happening.</p>
 
 <p>Look at this example:</p>
+
+<blockquote>
+  <p>Giving examples of why inheritance is bad is extremely difficult, I am trying to create meaningful examples, but they will always feel <em>fake</em>. 
+You should think about a software system as an evolving beast. Always changing. With each change we evolve the system into a direction it might not
+have been meant to go. This is where “I like to see what something does” comes from.</p>
+</blockquote>
 
 <p>Imagine you’re working on a game where creatures have hit points (<code class="language-plaintext highlighter-rouge">hp</code>) and can take damage. 
 You decide to model this with a base <code class="language-plaintext highlighter-rouge">Creature</code> class.</p>
@@ -1273,8 +1284,8 @@ below a threshold:</p>
 </code></pre></div></div>
 
 <p>However, with the Warrior’s current overridden method, this new behavior is forced to be applied after
-the armor has mitigated some of the damage, making sure that the warrior will suffer the +10 dmg more
-than other classes without armor.</p>
+the armor has mitigated some of the damage, making sure that the warrior will suffer the full +10 dmg, 
+while it should only suffer 8.</p>
 
 <p>This example clearly shows how your logic becomes less transparent when you stack functionality like this.
 A better way of doing this would be to use composition:</p>
@@ -1300,24 +1311,33 @@ A better way of doing this would be to use composition:</p>
 
     <span class="k">public</span> <span class="k">void</span> <span class="nf">TakeDamage</span><span class="p">(</span><span class="kt">int</span> <span class="n">damage</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">remainingDamage</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">armorReduction</span><span class="p">(</span><span class="n">damage</span><span class="p">);</span>
-        <span class="n">Hp</span> <span class="p">-=</span> <span class="n">Calculations</span><span class="p">.</span><span class="nf">TakeDamage</span><span class="p">(</span><span class="n">remainingDamage</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">dmg</span> <span class="p">=</span> <span class="n">Calculations</span><span class="p">.</span><span class="nf">TakeDamage</span><span class="p">(</span><span class="n">damage</span><span class="p">);</span>
+        <span class="n">Hp</span> <span class="p">-=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">armorReduction</span><span class="p">(</span><span class="n">dmg</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
+<blockquote>
+  <p>Note on Traits: While traits in rust are an awesome way to split data from functionality, they are 
+not the only way. In C# you can use interfaces, or as I did in my implementation, split the functionality
+into stateless methods and apply the transformations inside those methods.</p>
+</blockquote>
+
 <h4 id="the-illusion-of-reusability">The illusion of Reusability</h4>
 <p>One of the main reasons developers opt for inheritance is reusability. While inheritance 
-can provide reusability, it often comes at the cost of flexibility. As shown in the example, 
+can provide reusability, it often comes at the cost of flexibility, making your implementation rigid. As shown in the example, 
 it’s much cleaner to use composition where each class or trait does one thing and does it
 well. It is easier to reuse a small, well-defined component than a large, spaghetti one.</p>
 
 <p>Reuse comes in multiple forms, reuse of data and reuse of functionality. When you reuse data
 you are reusing information either to display it differently, or to act upon differently.
 This is not bad, it is easy to refactor and easy to maintain. Reuse of functionality leads
-to all manner of type information being spread throughout the code. Generics, Generic type
-guards and interfaces all pop up because we want to reuse. All of these features make 
-refactoring your code a lot harder than it needs to be.</p>
+to all manner of type information being spread throughout the code.</p>
+
+<p>A great example of reuse being both a blessing and a curse are Generics. A generic type
+is a type which is substituted for a concrete type at either runtime or compile time. 
+But, just because you are using generics, you now have to worry about guards. It almost
+seems like we’re coding a meta language instead of developing te actual feature.</p>
 
 <h4 id="example-of-frailty">Example of frailty</h4>
 
@@ -1327,21 +1347,35 @@ for authentication.</p>
 
 <p>We would write something like:</p>
 
-<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">PremiumPlayer</span> <span class="p">:</span> <span class="n">Player</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">premiumUrl</span> <span class="p">=</span> <span class="s">"/premium-player"</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">AuthenticationHeader</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Player</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="kt">string</span> <span class="n">url</span> <span class="p">=</span> <span class="s">"/player"</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="nf">PremiumPlayer</span><span class="p">(</span><span class="kt">string</span> <span class="n">authHeader</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">premiumUrl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="nf">Send</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"Sending message to </span><span class="p">{</span><span class="n">url</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+        <span class="c1">// Simulate sending logic</span>
+        <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PremiumPlayer</span> <span class="p">:</span> <span class="n">Player</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">premiumUrl</span> <span class="p">=</span> <span class="s">"/premium-player"</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">AuthenticationHeader</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">PremiumPlayer</span><span class="p">(</span><span class="kt">string</span> <span class="n">authHeader</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">url</span> <span class="p">=</span> <span class="n">premiumUrl</span><span class="p">;</span>  <span class="c1">// Update URL for premium players</span>
         <span class="k">this</span><span class="p">.</span><span class="n">AuthenticationHeader</span> <span class="p">=</span> <span class="n">authHeader</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="c1">// Overriding Send method to include the new header</span>
     <span class="k">public</span> <span class="k">override</span> <span class="n">Task</span> <span class="nf">Send</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// include the AuthenticationHeader</span>
-        <span class="c1">// send the message</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"Sending message to </span><span class="p">{</span><span class="n">url</span><span class="p">}</span><span class="s"> with auth header </span><span class="p">{</span><span class="n">AuthenticationHeader</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+        <span class="c1">// Simulate sending logic with authentication</span>
+        <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
 </code></pre></div></div>
+
 <p>By overriding the Send method, we now bypass the original implementation and have forced
 the code to behave differently. We can still use the <code class="language-plaintext highlighter-rouge">PremiumPlayer</code> as if it is a <code class="language-plaintext highlighter-rouge">Player</code>
 because of polymorphism. But we can no longer clearly see what is happening. If we want
@@ -1419,11 +1453,13 @@ as a parameter.</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>We are passing the <code class="language-plaintext highlighter-rouge">IMessageSender</code> to the <code class="language-plaintext highlighter-rouge">IMessage</code> class and with that service we are injecting
-we can send the message. This is a more natural way of writing the code. I still do not like it
-that the <code class="language-plaintext highlighter-rouge">Player</code> and <code class="language-plaintext highlighter-rouge">PremiumPlayer</code> classes have these methods which are strictly for sending them, 
-like the <code class="language-plaintext highlighter-rouge">SendMessage</code> method and the <code class="language-plaintext highlighter-rouge">Serialize</code> method, but at least they belong to the <code class="language-plaintext highlighter-rouge">IMessage</code>
-interface and not longer to the class itself.</p>
+<p>We are passing the <code class="language-plaintext highlighter-rouge">IMessageSender</code> to the <code class="language-plaintext highlighter-rouge">IMessage</code> class and with that service we can execute the send message. 
+This is a more natural way of writing the code. I still do not like it that the <code class="language-plaintext highlighter-rouge">Player</code> and <code class="language-plaintext highlighter-rouge">PremiumPlayer</code> classes 
+have these methods which are strictly for sending them, like the <code class="language-plaintext highlighter-rouge">SendMessage</code> method and the <code class="language-plaintext highlighter-rouge">Serialize</code> method, 
+but at least they belong to the <code class="language-plaintext highlighter-rouge">IMessage</code> interface and not longer to the class itself.</p>
+
+<p>I would love to invert the dependencies so that the <code class="language-plaintext highlighter-rouge">IMessage</code> does not have a dependency on the <code class="language-plaintext highlighter-rouge">IMessageSender</code>!
+The next part will try to give an example of this.</p>
 
 <h3 id="layers-or-services">Layers or Services</h3>
 <p>Another way to structure this is by making the <code class="language-plaintext highlighter-rouge">MessageSender.Send</code> a function we can call with
@@ -1494,7 +1530,7 @@ correctly, no matter what the message is.</p>
 
 <p>This comes a lot closer to a nice separation of concerns. One other thing to notice is that 
 I do not have to use interfaces. I just pass in the actual classes. The code is so simple that
-I even have a hard time advocating for a lot of tests. I would however run large integration
+I even have a hard time advocating for a lot of unit tests. I would, however, run large integration
 and black box tests in a system like this.</p>
 
 <h2 id="should-you-really-never-use-inheritance">Should you really never use inheritance?</h2>
