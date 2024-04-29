@@ -7,8 +7,8 @@ published: true
 tags: Programming OOP
 ---
 
-I hate inheritance! There, I've said it. It's true, I absolutely hate it. Inheritance destroys any
-chance you have of understanding your code. And it always starts with such good intentions. You start
+I hate inheritance! There, I've said it. It's true, I absolutely hate it. Now, with that out of the way, let the nuance begin!
+Inheritance destroys any chance you have of understanding your code. And it always starts with such good intentions. You start
 by defining a bit of functionality. Now you add another class and you see that same functionality 
 happening in two places. Before you actually realize what has happened, you now have a base class
 and two concrete classes. Life seems good right?
