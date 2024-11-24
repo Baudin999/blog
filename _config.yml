@@ -20,6 +20,17 @@ linkedin: https://www.linkedin.com/in/carlos-k-4016b8225/
 github: https://github.com/baudin999
 include:
     - extra
+    - scholar
+
+scholar:
+  bibliography_template: bib
+  style: apa
+  locale: en
+
+
+collections:
+  populism:
+    output: true
 
 hydejack:
   dark_mode:
@@ -55,6 +66,7 @@ theme_color: rgb(45, 16, 9)
 plugins:
   - jekyll-feed
   - jekyll-avatar
+  - jekyll-scholar
 
 # Exclude from processing.
 # The following items will not be processed, by default.
