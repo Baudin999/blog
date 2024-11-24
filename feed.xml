@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-04-29T09:04:24+02:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://baudin999.github.io/blog//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://baudin999.github.io/blog//blog/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-11-24T16:37:52+01:00</updated><id>https://baudin999.github.io/blog//blog/feed.xml</id><title type="html">Carlos’s Blog</title><subtitle>I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!</subtitle><author><name>Carlos Kelkboom</name><email>baudin-sky@pm.me</email></author><entry><title type="html">GoLang, a brief tutorial</title><link href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html" rel="alternate" type="text/html" title="GoLang, a brief tutorial" /><published>2023-08-25T00:00:00+02:00</published><updated>2023-08-25T00:00:00+02:00</updated><id>https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial</id><content type="html" xml:base="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#things-well-need-to-know" id="markdown-toc-things-well-need-to-know">Things we’ll need to know</a>    <ul>
       <li><a href="#-vs-" id="markdown-toc--vs-"><code class="language-plaintext highlighter-rouge">:=</code> vs <code class="language-plaintext highlighter-rouge">=</code></a></li>
       <li><a href="#type-conversions" id="markdown-toc-type-conversions">Type conversions</a>        <ul>
@@ -289,7 +289,7 @@ if we pass in a negative number.</p>
 </code></pre></div></div>
 
 <h2 id="working-with-collections">Working with collections</h2>
-<p>Let’s define a player type first<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>:</p>
+<p>Let’s define a player type first<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>:</p>
 
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Player</span> <span class="k">struct</span> <span class="p">{</span>
     <span class="n">Id</span>          <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span>
@@ -299,7 +299,7 @@ if we pass in a negative number.</p>
 
 <p>If we wanted to store a player in an array, in go we call this type a slice
 because it does not have a fixed length, we can create a variable which holds 
-references<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> to <code class="language-plaintext highlighter-rouge">Player</code> objects:</p>
+references<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> to <code class="language-plaintext highlighter-rouge">Player</code> objects:</p>
 
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">players</span> <span class="p">[]</span><span class="o">*</span><span class="n">Player</span>
 </code></pre></div></div>
@@ -468,7 +468,7 @@ You cannot change the values of the original directly.</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>By passing in a reference (a pointer<sup id="fnref:2:1" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>) to a <code class="language-plaintext highlighter-rouge">Vector3</code> object, we can mutate the values.
+<p>By passing in a reference (a pointer<sup id="fnref:2:1"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>) to a <code class="language-plaintext highlighter-rouge">Vector3</code> object, we can mutate the values.
 This distinction is essential to grasp in Go. It provides a powerful and clear way to 
 specify whether a method can modify an object’s values.</p>
 
@@ -481,7 +481,7 @@ specify whether a method can modify an object’s values.</p>
 You can’t explain the first without the second and vice versa. So this is going to be a 
 heavy chapter.</p>
 
-<p>A <em>go routine</em> is a light-weight concurrency<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup> model managed by the Go runtime. You should 
+<p>A <em>go routine</em> is a light-weight concurrency<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> model managed by the Go runtime. You should 
 not think of it as multithreading or other types of parallelism, but think of them
 as fleeting, small, functions you can execute independently of each other. I know it’s 
 hard to understand the definition, and I am being “loosy-goosy” with the terms, but I 
@@ -801,13 +801,13 @@ run simultaneously and coordinate their results back to the main thread illustra
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:1" role="doc-endnote">
+    <li id="fn:1">
       <p><a href="#working_with_uuids">Working with UUIDs</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
-    <li id="fn:2" role="doc-endnote">
+    <li id="fn:2">
       <p><a href="#pointers">Working with pointers</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
     </li>
-    <li id="fn:3" role="doc-endnote">
+    <li id="fn:3">
       <p><a href="#concurrency">Concurrency vs Parallelism</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
