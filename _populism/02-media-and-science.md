@@ -5,6 +5,8 @@ chapter: 2
 order: 2
 ---
 
+> This chapter is [generalizing](#generalization-and-trends) a lot of things, please read why if you find yourself thinking *I am missing nuance!*
+
 The relationship between the public and institutions like media and science has fundamentally shifted in recent decades, paving the way for populist movements to exploit these vulnerabilities. These changes, rooted in the fragmentation of media and the politicization of science, have eroded public trust, creating fertile ground for simplified, emotionally charged narratives.
 
 
