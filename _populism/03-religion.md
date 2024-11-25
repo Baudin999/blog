@@ -5,7 +5,7 @@ chapter: 3
 order: 3
 ---
 
-### The Role of Dogmatic Belief Systems in Populist Movements
+> This chapter is [generalizing](#generalization-and-trends) a lot of things, please read why if you find yourself thinking *I am missing nuance!*
 
 Humans are inherently uncomfortable with uncertainty. Faced with the unknown, we construct stories, patterns, and beliefs—regardless of their validity. Religion has long been the most effective mechanism for this, masquerading as moral philosophy while preying on fear and ignorance. At its core, religion thrives on unprovable claims, offering comforting lies in place of hard truths. It is no different from any other human institution: corrupt, power-hungry, and hypocritical. The difference is that religion elevates its deceit to a sacred status, demanding unquestioning obedience while eroding intellectual and moral integrity.
 

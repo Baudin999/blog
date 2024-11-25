@@ -5,6 +5,8 @@ chapter: 5
 order: 5
 ---
 
+> This chapter is [generalizing](#generalization-and-trends) a lot of things, please read why if you find yourself thinking *I am missing nuance!*
+
 In an era where belief often overshadows reason, society increasingly turns to comforting narratives over inconvenient truths. This preference is not born from ignorance but from exhaustion—a relentless barrage of misinformation, sensationalism, and institutional betrayal has made discerning fact from fiction feel insurmountable.
 
 The media, once trusted to inform and illuminate, now prioritizes shock value over accuracy. Sensationalist headlines, amplified during crises like the COVID-19 pandemic, stoke fear and confusion. Retractions, when they come, are buried beneath waves of misinformation, leaving the public adrift in a sea of half-truths and speculation. In this environment, trust in journalism crumbles, and the media transforms from a guide to truth into a tool for manipulation.

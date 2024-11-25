@@ -5,6 +5,7 @@ chapter: 4
 order: 4
 ---
 
+> This chapter is [generalizing](#generalization-and-trends) a lot of things, please read why if you find yourself thinking *I am missing nuance!*
 
 Politics, at its core, should serve as a mechanism for governance and representation. Instead, it has become synonymous with corruption, broken promises, and exploitation of public trust. Across nations, politicians prioritize personal gain, special interests, or foreign donors over the well-being of their constituents. The erosion of political integrity feeds public disillusionment, creating a fertile ground for populist movements to exploit.
 
