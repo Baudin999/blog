@@ -5,6 +5,8 @@ chapter: 1
 order: 1
 ---
 
+> This document is [generalizing](#generalization-and-trends) a lot of things, please read why if you find yourself thinking *I am missing nuance!*
+
 Populism divides society into two antagonistic groups: "the pure people" and "the corrupt elite," demanding that politics embody the *volonté générale* (general will) of the people. This definition, articulated by Cas Mudde, captures populism's malleability—it can integrate ideologies like socialism or nationalism to fit its narrative.{% cite mudde2004populist %}
 
 At its core, populism thrives not only through its rhetoric but through the deliberate manipulation of public sentiment, often in bad faith. By exploiting public trust and simplifying complex societal problems, populists act with intentional deceit to gain power. This strategy is not only unethical but arguably should face legal accountability—yet political systems shield leaders from consequences.
