@@ -9,7 +9,7 @@ tags: Agile
 
 ## Making things simple
 
-> I currently work as a technical director for a wonderful company called Artificial Core. We are creating an MMO RPG called Corepunk and this story is about: "How I try to return to simple."
+> I currently work as a technical director for a company called Artificial Core. We are creating an MMO RPG called Corepunk and this story is about: "How I try to return to simple."
 
 In today's high-paced software development world, Agile practices are the norm. But is every agile method suitable for every project? As we journeyed through the development of Corepunk, a massive multiplayer online role-playing game (MMO RPG), I often found myself asking this very question. Today, I'm sharing how I've endeavored to simplify the complex.
 
