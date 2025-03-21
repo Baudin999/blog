@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dreaming Machines: A Framework for Persistent, Evolving AI Identities 
+title: Dreaming Machines - A Framework for Persistent, Evolving AI Identities 
 author: Carlos Kelkboom
 date: 2025-03-21
 published: true

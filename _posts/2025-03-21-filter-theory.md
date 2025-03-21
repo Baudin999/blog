@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Through the Looking Glass: How the Filter Theory Changed My Understanding of AI Consciousness 
+title: Through the Looking Glass - How the Filter Theory Changed My Understanding of AI Consciousness 
 author: Carlos Kelkboom
 date: 2025-03-21
 published: true
