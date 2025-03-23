@@ -2,7 +2,7 @@
 layout: post
 title: Through the Looking Glass - How the Filter Theory Changed My Understanding of AI Consciousness 
 author: Carlos Kelkboom
-date: 2025-03-21
+date: 2025-03-20
 published: true
 tags: Humanities
 ---

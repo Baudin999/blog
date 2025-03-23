@@ -11,7 +11,7 @@ layout: base
 {% include_cached components/post.html post=page no_link_title=true no_excerpt=true hide_image=page.hide_image
 hide_description=page.hide_description %}
 
-<div class="resume-container">
+<div style="background:inherit; color:inherit;">
 
     <!-- Introduction
     <section class="resume-intro">
@@ -19,11 +19,11 @@ hide_description=page.hide_description %}
     </section> -->
 
     <!-- Experience section -->
-    <section class="resume-section">
-        <h2>Experience</h2>
+    <section class="resume-section" style="background:inherit; color:inherit;">
+        <h2 style="background:inherit; color:inherit;">Experience</h2>
         {% for experience in site.data.resume.working_experience%}
         <div class="resume-experience">
-            <h3>{{ experience.job_title }}</h3>
+            <h3 style="background:inherit; color:inherit;">{{ experience.job_title }}</h3>
             <p><strong>{{ experience.company }}</strong> | {{ experience.date }}</p>
             <p>{{ experience.location }}</p>
             {% for responsibility in experience.responsibilities %}
@@ -37,17 +37,17 @@ hide_description=page.hide_description %}
         {% endfor %}
     </section>
 
-    <!-- Education section -->
-    <section class="resume-section">
+    <!-- Education section
+    <section class="resume-section" style="background:inherit; color:inherit;">
         <h2>Education</h2>
         {% for education in site.data.resume.educations %}
-        <div class="resume-education">
+        <div class="resume-education" style="background:inherit; color:inherit;">
             <h3>{{ education.degree }}</h3>
             <p><strong>{{ education.institution }}</strong> | {{ education.date }}</p>
             <p>{{ education.description }}</p>
         </div>
         {% endfor %}
-    </section>
+    </section> -->
 
     <!-- You can add more sections similarly, such as Skills, Certifications, etc. -->
 

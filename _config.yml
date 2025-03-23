@@ -34,10 +34,11 @@ collections:
     output: true
 
 hydejack:
+  paginate: 50
   dark_mode:
     dynamic: true
-    sunrise: 6
-    sunset: 18
+    sunrise: 60
+    sunset: 180
     icon: true
     always: true 
 

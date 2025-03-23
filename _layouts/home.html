@@ -1,0 +1,40 @@
+---
+# This is a custom home layout that shows all posts without pagination
+layout: base
+---
+
+<div class="page">
+  <h1 class="page-title">{{ page.title | default:site.title }}</h1>
+
+  {{ content }}
+
+  <div class="markdown-body">
+    <article class="page mb6" role="article">
+      {% for post in site.posts %}
+      <div class="post-item">
+        <h2>
+          <a href="{{ post.url | relative_url }}">
+            {{ post.title }}
+          </a>
+        </h2>
+        
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%Y-%m-%d" }}
+          </time>
+        </div>
+
+        {% if post.description %}
+          <p>{{ post.description }}</p>
+        {% elsif post.excerpt %}
+          <p>{{ post.excerpt | strip_html | truncatewords: 200 }}</p>
+        {% endif %}
+        
+        <div class="hr pb0"></div>
+      </div>
+      {% endfor %}
+    </article>
+  </div>
+</div>
+
+{% include components/dingbat.html %}

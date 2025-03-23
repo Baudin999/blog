@@ -6,6 +6,9 @@ date: 2023-08-25
 published: true
 tags: Programming Go
 ---
+
+Hopefully, enough to get you started with the wonderful GoLang language.
+
 * TOC
 {:toc}
 

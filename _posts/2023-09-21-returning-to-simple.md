@@ -3,9 +3,11 @@ layout: post
 title: Returning to simple 
 author: Carlos Kelkboom
 date: 2023-09-21
-published: false
+published: true
 tags: Agile
 ---
+
+How I went back to simple in order to help develop a game called Corepunk. 
 
 ## Making things simple
 
@@ -42,17 +44,20 @@ Our Git structure is designed for clarity:
 We keep everything in `feature/name-of-feature` branches.
 Before any merge to the master, we first merge the master into the feature branch.
 Release-specific fixes are diligently applied both to release branches and the master.
-Documentation: Tiered and Transparent
+
+## Documentation: Tiered and Transparent
+
 We've segregated documentation to offer clarity at every level:
 
-High Level: Confluence houses our process and project documentation.
-Technical Details: Markdown files, committed alongside code, delve into the technicalities.
-Task-specific: JIRA gives us the lowdown on individual tasks.
-Collaboration at Its Core
-At the heart of our approach is collaboration. Production teams work hand-in-hand with devs and QAs, fostering open conversations that enhance the product. And though we may not strictly adhere to Test-Driven Development (TDD), our robust integration tests ensure the product's reliability.
+* **High Level**: Confluence houses our process and project documentation.
+* **Technical Details**: Markdown files, committed alongside code, delve into the technicalities.
+* **Task-specific**: JIRA gives us the lowdown on individual tasks.
 
-Remote Yet Unified
+## Collaboration at it's Core
+At the heart of my approach is collaboration. Production teams work hand-in-hand with devs and QAs, fostering open conversations that enhance the product. And though we may not strictly adhere to Test-Driven Development (TDD), our robust integration tests ensure the product's reliability.
+
+## Remote Yet Unified
 Though our team operates entirely remotely, the structures in place — from our communication mandates to our clear documentation — ensure seamless collaboration, rendering geographical distances irrelevant.
 
-Closing Thoughts
+## Closing Thoughts
 In the quest to develop Corepunk, the idea was never to reinvent the wheel but to strip away the unnecessary, to return to simplicity. By tailoring Agile practices to our unique needs, we've found a rhythm that works for us — one that might just resonate with you.

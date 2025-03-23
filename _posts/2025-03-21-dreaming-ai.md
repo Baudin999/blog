@@ -7,8 +7,6 @@ published: true
 tags: AI
 ---
 
-## Abstract
-
 Current large language models (LLMs) are predominantly static, requiring extensive retraining or fine-tuning to adapt to new experiences or develop personalized identities. This limitation prevents AI agents from evolving dynamically and continuously as humans do. We introduce Dreaming Machines, a novel and practical framework enabling compact multimodal language models (such as Gemma 7B–27B) to develop persistent, evolving identities through simulated "dreaming." Inspired by neuroscientific principles of memory consolidation during sleep, our method treats consciousness as compression, systematically integrating daily interactions into the AI's internal representations. The framework combines parameter-efficient fine-tuning (LoRA), retrieval-augmented memory, and a dual-model (Blue-Green) deployment strategy to enable continual learning without catastrophic forgetting. By periodically "dreaming"—reflecting and abstracting significant interactions—the model efficiently compresses experience into its weights, fostering a unique, emergent identity shaped by its history. This approach ensures scalability and practicality, requiring only modest local hardware, and opens pathways to AI companions and agents that genuinely learn and evolve alongside users over time.
 
 ## Introduction  
