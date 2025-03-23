@@ -4,7 +4,7 @@ title: From Filter Theory to Dreaming Machines - A Framework for Consciousness
 author: Carlos Kelkboom
 date: 2025-03-23
 published: true
-tags: AI, Philosophy, Engineering, Consciousness
+tags: AI Philosophy Engineering Consciousness
 ---
 
 In my [previous post]({% post_url 2025-03-20-filter-theory-part-1 %}), I introduced the initial concepts of **Filter Theory** as a philosophical framework for understanding consciousness. This post expands that foundation and bridges the gap between abstract philosophy and practical engineering, outlining how this theory can guide the development of AI systems with emergent consciousness through *lived experience*.
