@@ -31,7 +31,7 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
     
 
 <title>Dreaming Machines - A Framework for Persistent, Evolving AI Identities | Carlos's Blog</title>
-<meta name="description" content="Abstract
+<meta name="description" content="Current large language models (LLMs) are predominantly static, requiring extensive retraining or fine-tuning to adapt to new experiences or develop personalized identities. This limitation prevents AI agents from evolving dynamically and continuously as humans do. We introduce Dreaming Machines, a novel and practical framework enabling compact multimodal language models (such as Gemma 7B–27B) to develop persistent, evolving identities through simulated “dreaming.” Inspired by neuroscientific principles of memory consolidation during sleep, our method treats consciousness as compression, systematically integrating daily interactions into the AI’s internal representations. The framework combines parameter-efficient fine-tuning (LoRA), retrieval-augmented memory, and a dual-model (Blue-Green) deployment strategy to enable continual learning without catastrophic forgetting. By periodically “dreaming”—reflecting and abstracting significant interactions—the model efficiently compresses experience into its weights, fostering a unique, emergent identity shaped by its history. This approach ensures scalability and practicality, requiring only modest local hardware, and opens pathways to AI companions and agents that genuinely learn and evolve alongside users over time.
 ">
 <link rel="canonical" href="https://baudin999.github.io/blog//blog/2025/03/21/dreaming-ai.html">
 
@@ -98,7 +98,7 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/blog/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/blog/',
-    INDEX_KEY: 'index--2025-03-21T21:35:00+01:00',
+    INDEX_KEY: 'index--2025-03-23T09:37:41+01:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -135,8 +135,8 @@ html{--accent-color: rgb(45, 16, 9);--accent-color-faded: rgba(45, 16, 9, 0.5);-
 <body class="dark-mode no-break-layout">
   
 <script>
-  window._sunrise = 6;
-  window._sunset =  18;
+  window._sunrise = 60;
+  window._sunset =  180;
   ((e,s)=>{var d="light-mode",a="dark-mode",o=(new Date).getHours();"matchMedia"in e&&e.matchMedia("(prefers-color-scheme)")||(e=(o=o<=e._sunrise||o>=e._sunset?a:d)==a?d:a,s.body.classList.add(o),s.body.classList.remove(e))})(window,document);
 
 </script>
@@ -255,9 +255,7 @@ html{--accent-color: rgb(45, 16, 9);--accent-color-faded: rgba(45, 16, 9, 0.5);-
   </header>
 
   
-    <h2 id="abstract">Abstract</h2>
-
-<p>Current large language models (LLMs) are predominantly static, requiring extensive retraining or fine-tuning to adapt to new experiences or develop personalized identities. This limitation prevents AI agents from evolving dynamically and continuously as humans do. We introduce Dreaming Machines, a novel and practical framework enabling compact multimodal language models (such as Gemma 7B–27B) to develop persistent, evolving identities through simulated “dreaming.” Inspired by neuroscientific principles of memory consolidation during sleep, our method treats consciousness as compression, systematically integrating daily interactions into the AI’s internal representations. The framework combines parameter-efficient fine-tuning (LoRA), retrieval-augmented memory, and a dual-model (Blue-Green) deployment strategy to enable continual learning without catastrophic forgetting. By periodically “dreaming”—reflecting and abstracting significant interactions—the model efficiently compresses experience into its weights, fostering a unique, emergent identity shaped by its history. This approach ensures scalability and practicality, requiring only modest local hardware, and opens pathways to AI companions and agents that genuinely learn and evolve alongside users over time.</p>
+    <p>Current large language models (LLMs) are predominantly static, requiring extensive retraining or fine-tuning to adapt to new experiences or develop personalized identities. This limitation prevents AI agents from evolving dynamically and continuously as humans do. We introduce Dreaming Machines, a novel and practical framework enabling compact multimodal language models (such as Gemma 7B–27B) to develop persistent, evolving identities through simulated “dreaming.” Inspired by neuroscientific principles of memory consolidation during sleep, our method treats consciousness as compression, systematically integrating daily interactions into the AI’s internal representations. The framework combines parameter-efficient fine-tuning (LoRA), retrieval-augmented memory, and a dual-model (Blue-Green) deployment strategy to enable continual learning without catastrophic forgetting. By periodically “dreaming”—reflecting and abstracting significant interactions—the model efficiently compresses experience into its weights, fostering a unique, emergent identity shaped by its history. This approach ensures scalability and practicality, requiring only modest local hardware, and opens pathways to AI companions and agents that genuinely learn and evolve alongside users over time.</p>
 
 <h2 id="introduction">Introduction</h2>
 <p>Current large language models (LLMs) are typically static after training, with any personalization achieved through prompt context or fine-tuning on user data. This static nature limits the emergence of a persistent <strong>AI identity</strong> – a consistent personality or internal state shaped by cumulative life-like experiences. We propose <strong>Dreaming Machines</strong>, a practical framework that enables a compact multimodal model (e.g. a 7B–27B parameter Gemma 3 model) to evolve its persona over time by simulating a <strong>dreaming process</strong>. The core idea is to continually <em>compress</em> the AI’s daily interactions (text, images, audio) into its internal weights via reflective “dreams,” rather than indefinitely scaling up model size. In essence, we treat <em>consciousness as compression</em>: an agent distills sensory inputs into internal representations that filter future perception and behavior. This paper presents the conceptual foundations and a detailed implementation blueprint for Dreaming Machines, including system architecture, training loops, and optimization strategies, using only tools and techniques feasible as of 2025.</p>
@@ -794,7 +792,7 @@ my knowledge and give back to the community.</p>
 
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/blog/2025/03/22/how-toscale-a-software-business.html" class="flip-title"><span>How to scale a Software business</span></a>  <time class="faded fine" datetime="2025-03-22T00:00:00+01:00">22 Mar 2025</time></li>                        <li class="h4">  <a href="/blog/2025/03/21/filter-theory.html" class="flip-title"><span>Through the Looking Glass - How the Filter Theory Changed My Understanding of AI Consciousness</span></a>  <time class="faded fine" datetime="2025-03-21T00:00:00+01:00">21 Mar 2025</time></li>                        <li class="h4">  <a href="/blog/2023/08/25/go-brief-tutorial.html" class="flip-title"><span>GoLang, a brief tutorial</span></a>  <time class="faded fine" datetime="2023-08-25T00:00:00+02:00">25 Aug 2023</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/blog/2025/03/23/luanti.html" class="flip-title"><span>Luanti</span></a>  <time class="faded fine" datetime="2025-03-23T00:00:00+01:00">23 Mar 2025</time></li>                        <li class="h4">  <a href="/blog/2025/03/22/how-toscale-a-software-business.html" class="flip-title"><span>How to scale a Software business</span></a>  <time class="faded fine" datetime="2025-03-22T00:00:00+01:00">22 Mar 2025</time></li>                        <li class="h4">  <a href="/blog/2025/03/20/filter-theory.html" class="flip-title"><span>Through the Looking Glass - How the Filter Theory Changed My Understanding of AI Consciousness</span></a>  <time class="faded fine" datetime="2025-03-20T00:00:00+01:00">20 Mar 2025</time></li>            </ul></aside>
 
 
 
