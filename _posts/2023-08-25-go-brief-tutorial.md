@@ -7,22 +7,20 @@ published: true
 tags: Programming Go
 ---
 
-Hopefully, enough to get you started with the wonderful GoLang language.
+
+This tutorial offers an in-depth introduction to GoLang, emphasizing how its design and syntax set it apart from languages like C# and JavaScript. The article explains Go’s unique variable declaration syntax, its strict approach to type conversions, and the innovative use of deferred statements for managing resources. It also covers key concepts such as handling collections, structs, interfaces, and pointers, while providing insights into Go’s powerful concurrency model with go routines and channels. Intertwined with practical explanations, the post reflects on the language’s philosophy of simplicity, clarity, and robustness, making it a compelling read for developers looking to harness the elegance and efficiency of Go.
+
 
 * TOC
 {:toc}
+
+---
 
 > This post is going to be a bit longer than my normal posts. It is 
   also going to be more technical than my normal posts. This is because
   I truly enjoy writing [GoLang](https://go.dev/). The language is a
   breath of fresh air and in this post I want to share this feeling with you 
   by going over a few of the powerful features of go.
-
-What shall we start with? I want something which really shows the power of
-GoLang. I want something which is useful. Let's create a small game server!
-
-> Disclaimer: this is *not* the way to create an actual game server for
-  an MMO RPG, this is a tutorial on GoLang, not game servers.
 
 ## Things we'll need to know
 In this chapter we will go into some details of the language. I will not
