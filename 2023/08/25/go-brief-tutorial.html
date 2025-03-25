@@ -31,7 +31,7 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
     
 
 <title>GoLang, a brief tutorial | Carlos's Blog</title>
-<meta name="description" content="Hopefully, enough to get you started with the wonderful GoLang language.
+<meta name="description" content="This tutorial offers an in-depth introduction to GoLang, emphasizing how its design and syntax set it apart from languages like C# and JavaScript. The article explains Go’s unique variable declaration syntax, its strict approach to type conversions, and the innovative use of deferred statements for managing resources. It also covers key concepts such as handling collections, structs, interfaces, and pointers, while providing insights into Go’s powerful concurrency model with go routines and channels. Intertwined with practical explanations, the post reflects on the language’s philosophy of simplicity, clarity, and robustness, making it a compelling read for developers looking to harness the elegance and efficiency of Go.
 ">
 <link rel="canonical" href="https://baudin999.github.io/blog//blog/2023/08/25/go-brief-tutorial.html">
 
@@ -98,7 +98,7 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/blog/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/blog/',
-    INDEX_KEY: 'index--2025-03-23T11:39:45+01:00',
+    INDEX_KEY: 'index--2025-03-25T07:57:21+01:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -255,7 +255,7 @@ html{--accent-color: rgb(45, 16, 9);--accent-color-faded: rgba(45, 16, 9, 0.5);-
   </header>
 
   
-    <p>Hopefully, enough to get you started with the wonderful GoLang language.</p>
+    <p>This tutorial offers an in-depth introduction to GoLang, emphasizing how its design and syntax set it apart from languages like C# and JavaScript. The article explains Go’s unique variable declaration syntax, its strict approach to type conversions, and the innovative use of deferred statements for managing resources. It also covers key concepts such as handling collections, structs, interfaces, and pointers, while providing insights into Go’s powerful concurrency model with go routines and channels. Intertwined with practical explanations, the post reflects on the language’s philosophy of simplicity, clarity, and robustness, making it a compelling read for developers looking to harness the elegance and efficiency of Go.</p>
 
 <ul id="markdown-toc">
   <li><a href="#things-well-need-to-know" id="markdown-toc-things-well-need-to-know">Things we’ll need to know</a>    <ul>
@@ -293,20 +293,14 @@ html{--accent-color: rgb(45, 16, 9);--accent-color-faded: rgba(45, 16, 9, 0.5);-
   </li>
 </ul>
 
+<hr />
+
 <blockquote>
   <p>This post is going to be a bit longer than my normal posts. It is 
   also going to be more technical than my normal posts. This is because
   I truly enjoy writing <a href="https://go.dev/">GoLang</a>. The language is a
   breath of fresh air and in this post I want to share this feeling with you 
   by going over a few of the powerful features of go.</p>
-</blockquote>
-
-<p>What shall we start with? I want something which really shows the power of
-GoLang. I want something which is useful. Let’s create a small game server!</p>
-
-<blockquote>
-  <p>Disclaimer: this is <em>not</em> the way to create an actual game server for
-  an MMO RPG, this is a tutorial on GoLang, not game servers.</p>
 </blockquote>
 
 <h2 id="things-well-need-to-know">Things we’ll need to know</h2>

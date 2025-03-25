@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.6 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+
+<title>Go Modules, Packages and Files - A Guide for C# and JavaScript Developers | Carlos's Blog</title>
+<meta name="description" content="The guide explains how Go’s approach to code organization contrasts with that of C# and JavaScript by emphasizing a directory-driven structure where every file belongs to a single package, and related packages are grouped into modules. Unlike C#—which compiles projects into DLLs and uses namespaces—and JavaScript—where each file typically acts as its own module with dependencies managed via package managers—Go mandates that all files within a directory share the same package, manages dependencies through a go.mod file, and restricts visibility to only those items that are capitalized. This framework not only simplifies dependency management by avoiding circular imports but also introduces a clear separation between public and internal code, encouraging developers to think of code organization in terms of packages and modules rather than namespaces or isolated files.
+">
+<link rel="canonical" href="https://baudin999.github.io/blog//blog/2023/08/26/go-into-thee-module.html">
+
+  
+
+  
+
+
+
+  <meta name="color-scheme" content="dark light">
+
+
+
+  <meta name="theme-color" content="rgb(45, 16, 9)">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Carlos's Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="Carlos's Blog">
+
+<meta name="generator" content="Hydejack v9.2.1" />
+
+
+<link rel="alternate" href="https://baudin999.github.io/blog//blog/2023/08/26/go-into-thee-module.html" hreflang="en">
+
+<link type="application/atom+xml" rel="alternate" href="https://baudin999.github.io/blog//blog/feed.xml" title="Carlos&apos;s Blog" />
+
+
+<link rel="shortcut icon"    href="/blog/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/blog/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/blog/assets/site.webmanifest">
+
+
+
+
+
+<link rel="preload" href="/blog/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>((r,a)=>{function d(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=a.createElement("script"),e=(n.src=e,t&&d(n,"load",t,{once:!0}),a.scripts[0]);return e.parentNode.insertBefore(n,e),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=a.createElement("script");function o(){r._loaded=!0,t&&d(n,"load",t,{once:!0});var e=a.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():d(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){d(a.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}})(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/blog/';
+  w._publicPath = '/blog/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/blog/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/blog/',
+    INDEX_KEY: 'index--2025-03-25T07:57:21+01:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/blog/assets/css/hydejack-9.2.1.css" id="_stylePreload">
+<link rel="stylesheet" href="/blog/assets/icomoon/style.css" id="_iconsPreload">
+
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(45, 16, 9);--accent-color-faded: rgba(45, 16, 9, 0.5);--accent-color-highlight: rgba(45, 16, 9, 0.1);--accent-color-darkened: rgb(13.125, 4.6666666667, 2.625);--theme-color: rgb(45, 16, 9);--dark-mode-body-bg: hsl(11.6666666667, 8.3333333333%, 17.5%);--dark-mode-border-color: hsl(11.6666666667, 8.3333333333%, 22.5%)}
+</style>
+
+
+<!--<![endif]-->
+
+
+
+
+
+</head>
+
+<body class="dark-mode no-break-layout">
+  
+<script>
+  window._sunrise = 60;
+  window._sunset =  180;
+  ((e,s)=>{var d="light-mode",a="dark-mode",o=(new Date).getHours();"matchMedia"in e&&e.matchMedia("(prefers-color-scheme)")||(e=(o=o<=e._sunrise||o>=e._sunset?a:d)==a?d:a,s.body.classList.add(o),s.body.classList.remove(e))})(window,document);
+
+</script>
+
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/blog/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/blog/">home</a></li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/blog/2023/">2023</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/blog/2023/08/">08</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/blog/2023/08/26/">26</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>go-into-thee-module.html</span>
+        
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-2023-08-26-go-into-thee-module" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Go Modules, Packages and Files - A Guide for C# and JavaScript Developers
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2023-08-26T00:00:00+02:00">26 Aug 2023</time>  on <span>Programming</span>, <span>Go</span>
+      </span>
+      
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>The guide explains how Go’s approach to code organization contrasts with that of C# and JavaScript by emphasizing a directory-driven structure where every file belongs to a single package, and related packages are grouped into modules. Unlike C#—which compiles projects into DLLs and uses namespaces—and JavaScript—where each file typically acts as its own module with dependencies managed via package managers—Go mandates that all files within a directory share the same package, manages dependencies through a go.mod file, and restricts visibility to only those items that are capitalized. This framework not only simplifies dependency management by avoiding circular imports but also introduces a clear separation between public and internal code, encouraging developers to think of code organization in terms of packages and modules rather than namespaces or isolated files.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#how-go-organization-differs-from-c-and-javascript" id="markdown-toc-how-go-organization-differs-from-c-and-javascript">How Go Organization Differs from C# and JavaScript</a>    <ul>
+      <li><a href="#in-c" id="markdown-toc-in-c">In C#:</a></li>
+      <li><a href="#in-javascript" id="markdown-toc-in-javascript">In JavaScript:</a></li>
+      <li><a href="#in-go" id="markdown-toc-in-go">In Go:</a></li>
+    </ul>
+  </li>
+  <li><a href="#go-packages-explained" id="markdown-toc-go-packages-explained">Go Packages Explained</a></li>
+  <li><a href="#go-modules-managing-dependencies" id="markdown-toc-go-modules-managing-dependencies">Go Modules: Managing Dependencies</a>    <ul>
+      <li><a href="#creating-a-module" id="markdown-toc-creating-a-module">Creating a Module</a></li>
+      <li><a href="#directory-structure-example" id="markdown-toc-directory-structure-example">Directory Structure Example</a></li>
+      <li><a href="#key-concepts-unique-to-go" id="markdown-toc-key-concepts-unique-to-go">Key Concepts Unique to Go</a>        <ul>
+          <li><a href="#1-one-package-per-directory" id="markdown-toc-1-one-package-per-directory">1. One Package Per Directory</a></li>
+          <li><a href="#2-package-vs-directory-names" id="markdown-toc-2-package-vs-directory-names">2. Package vs. Directory Names</a></li>
+          <li><a href="#3-the-internal-directory" id="markdown-toc-3-the-internal-directory">3. The <code class="language-plaintext highlighter-rouge">internal</code> Directory</a></li>
+          <li><a href="#4-importing-packages-within-your-module" id="markdown-toc-4-importing-packages-within-your-module">4. Importing Packages Within Your Module</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#common-gotchas-for-c-and-javascript-developers" id="markdown-toc-common-gotchas-for-c-and-javascript-developers">Common Gotchas for C# and JavaScript Developers</a></li>
+  <li><a href="#practical-example-creating-a-multi-package-application" id="markdown-toc-practical-example-creating-a-multi-package-application">Practical Example: Creating a Multi-Package Application</a>    <ul>
+      <li><a href="#directory-structure" id="markdown-toc-directory-structure">Directory Structure</a></li>
+      <li><a href="#gomod" id="markdown-toc-gomod">go.mod</a></li>
+      <li><a href="#maingo" id="markdown-toc-maingo">main.go</a></li>
+      <li><a href="#calculatoraddgo" id="markdown-toc-calculatoraddgo">calculator/add.go</a></li>
+      <li><a href="#calculatorsubtractgo" id="markdown-toc-calculatorsubtractgo">calculator/subtract.go</a></li>
+      <li><a href="#formatterdisplaygo" id="markdown-toc-formatterdisplaygo">formatter/display.go</a></li>
+    </ul>
+  </li>
+  <li><a href="#building-and-running" id="markdown-toc-building-and-running">Building and Running</a></li>
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
+</ul>
+
+<h2 id="how-go-organization-differs-from-c-and-javascript">How Go Organization Differs from C# and JavaScript</h2>
+
+<p>If you’re coming from C# or JavaScript, Go’s approach to code organization will feel different. Let’s compare:</p>
+
+<h3 id="in-c">In C#:</h3>
+<ul>
+  <li>Projects compile to DLLs</li>
+  <li>You reference other projects by referencing their DLLs</li>
+  <li>Code is organized into namespaces</li>
+  <li>You import with <code class="language-plaintext highlighter-rouge">using Namespace</code></li>
+  <li>Circular dependencies between projects are not allowed</li>
+</ul>
+
+<h3 id="in-javascript">In JavaScript:</h3>
+<ul>
+  <li>Code is organized into files or modules</li>
+  <li>You import with <code class="language-plaintext highlighter-rouge">import</code> or <code class="language-plaintext highlighter-rouge">require</code></li>
+  <li>Dependencies are managed with npm/yarn and package.json</li>
+  <li>Each file is its own module</li>
+</ul>
+
+<h3 id="in-go">In Go:</h3>
+<ul>
+  <li>Code is organized into <strong>packages</strong> (similar to namespaces)</li>
+  <li>Related packages are grouped into <strong>modules</strong> (similar to NuGet packages)</li>
+  <li>A single file belongs to exactly one package</li>
+  <li>All files in the same directory must belong to the same package</li>
+  <li>No explicit compilation to DLLs - Go builds executables directly</li>
+  <li>Dependencies are managed through <code class="language-plaintext highlighter-rouge">go.mod</code> files</li>
+</ul>
+
+<h2 id="go-packages-explained">Go Packages Explained</h2>
+
+<p>In Go, a package is a collection of source files in the same directory that are compiled together. It’s similar to a namespace in C#, but with important differences:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// This declares that this file belongs to the "main" package</span>
+<span class="k">package</span> <span class="n">main</span>
+
+<span class="c">// Import other packages to use their functionality</span>
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>  <span class="c">// Standard library package</span>
+    <span class="s">"strings"</span>  <span class="c">// Another standard library package</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c">// Using functions from the imported packages</span>
+    <span class="n">message</span> <span class="o">:=</span> <span class="s">"hello, world"</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">strings</span><span class="o">.</span><span class="n">ToUpper</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Key differences from C#:</strong></p>
+<ol>
+  <li>Every Go file must start with a <code class="language-plaintext highlighter-rouge">package</code> declaration</li>
+  <li>All files in the same directory must belong to the same package</li>
+  <li>You import packages, not namespaces</li>
+  <li>Only exported (capitalized) items are accessible outside the package</li>
+</ol>
+
+<h2 id="go-modules-managing-dependencies">Go Modules: Managing Dependencies</h2>
+
+<p>A Go module is a collection of related packages with versioning information. It’s roughly equivalent to a C# project or a JavaScript npm package.</p>
+
+<h3 id="creating-a-module">Creating a Module</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a new module named "github.com/yourusername/yourproject"</span>
+go mod init github.com/yourusername/yourproject
+</code></pre></div></div>
+
+<p>This creates a <code class="language-plaintext highlighter-rouge">go.mod</code> file, which is like a combination of a C# project file and a NuGet package reference list:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">module</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yourusername</span><span class="o">/</span><span class="n">yourproject</span>
+
+<span class="k">go</span> <span class="m">1.20</span>
+</code></pre></div></div>
+
+<h3 id="directory-structure-example">Directory Structure Example</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myproject/                     # Project root
+├── go.mod                     # Module definition
+├── go.sum                     # Dependency checksums (like packages.lock.json)
+├── main.go                    # Package "main" 
+├── utils/                     # Directory for "utils" package
+│   ├── helpers.go             # Part of "utils" package
+│   └── formatters.go          # Also part of "utils" package
+└── internal/                  # Special directory for private packages
+    └── config/                # Package "config" that can't be imported externally
+        └── settings.go
+</code></pre></div></div>
+
+<h3 id="key-concepts-unique-to-go">Key Concepts Unique to Go</h3>
+
+<h4 id="1-one-package-per-directory">1. One Package Per Directory</h4>
+<p>All files in a single directory must belong to the same package. This is fundamentally different from C# where a directory can contain multiple namespaces.</p>
+
+<h4 id="2-package-vs-directory-names">2. Package vs. Directory Names</h4>
+<p>The package name doesn’t have to match the directory name, but it’s good practice:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myproject/
+├── stringutils/   # Directory name
+    └── format.go  # Contains: package stringutils
+</code></pre></div></div>
+
+<h4 id="3-the-internal-directory">3. The <code class="language-plaintext highlighter-rouge">internal</code> Directory</h4>
+<p>Any package under an <code class="language-plaintext highlighter-rouge">internal/</code> directory can only be imported by code in its parent module:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myproject/
+├── internal/
+│   └── auth/      # Can only be imported by code in "myproject"
+└── api/
+    └── handlers.go  # Can import "myproject/internal/auth"
+</code></pre></div></div>
+
+<p>This is similar to internal visibility in C# but enforced at the module level.</p>
+
+<h4 id="4-importing-packages-within-your-module">4. Importing Packages Within Your Module</h4>
+
+<p>If your module is <code class="language-plaintext highlighter-rouge">github.com/username/myproject</code>, you import packages like this:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">(</span>
+    <span class="s">"github.com/username/myproject/utils"</span>  <span class="c">// Full module path</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>This is different from C# where you just use the namespace without the project name.</p>
+
+<h2 id="common-gotchas-for-c-and-javascript-developers">Common Gotchas for C# and JavaScript Developers</h2>
+
+<ol>
+  <li>
+    <p><strong>No Circular Dependencies</strong>: Like in C#, circular imports between packages are not allowed in Go.</p>
+  </li>
+  <li><strong>Capitalization Matters</strong>: In Go, only names that start with a capital letter are exported (public). This is equivalent to <code class="language-plaintext highlighter-rouge">public</code> vs <code class="language-plaintext highlighter-rouge">private</code> in C#:
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">PublicFunction</span><span class="p">()</span> <span class="p">{}</span>  <span class="c">// Accessible outside package</span>
+<span class="k">func</span> <span class="n">privateFunction</span><span class="p">()</span> <span class="p">{}</span> <span class="c">// Only accessible within package</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>No File-Level Scope</strong>: Unlike JavaScript modules, there’s no file-level scope. Everything at the package level is shared among all files in that package.</p>
+  </li>
+  <li>
+    <p><strong>No Partial Classes</strong>: Unlike C#, Go doesn’t have partial classes. Each type must be fully defined in a single file.</p>
+  </li>
+  <li><strong>Import Paths</strong>: Import paths are based on module paths plus relative path, not just namespaces as in C#:
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// In C# you might do:</span>
+<span class="c">// using MyApp.Utils;</span>
+   
+<span class="c">// In Go you do:</span>
+<span class="k">import</span> <span class="s">"github.com/username/myapp/utils"</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="practical-example-creating-a-multi-package-application">Practical Example: Creating a Multi-Package Application</h2>
+
+<p>Let’s create a simple application with multiple packages:</p>
+
+<h3 id="directory-structure">Directory Structure</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myapp/
+├── go.mod                 // Contains: module github.com/username/myapp
+├── main.go                // Contains: package main
+├── calculator/
+│   ├── add.go             // Contains: package calculator
+│   └── subtract.go        // Contains: package calculator
+└── formatter/
+    └── display.go         // Contains: package formatter
+</code></pre></div></div>
+
+<h3 id="gomod">go.mod</h3>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">module</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">myapp</span>
+
+<span class="k">go</span> <span class="m">1.20</span>
+</code></pre></div></div>
+
+<h3 id="maingo">main.go</h3>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"github.com/username/myapp/calculator"</span>
+    <span class="s">"github.com/username/myapp/formatter"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">result</span> <span class="o">:=</span> <span class="n">calculator</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+    <span class="n">formatted</span> <span class="o">:=</span> <span class="n">formatter</span><span class="o">.</span><span class="n">Format</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="calculatoraddgo">calculator/add.go</h3>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">calculator</span>
+
+<span class="c">// Add returns the sum of two integers</span>
+<span class="k">func</span> <span class="n">Add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="calculatorsubtractgo">calculator/subtract.go</h3>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">calculator</span>
+
+<span class="c">// Subtract returns the difference between two integers</span>
+<span class="k">func</span> <span class="n">Subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="formatterdisplaygo">formatter/display.go</h3>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">formatter</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="c">// Format converts a number to a formatted string</span>
+<span class="k">func</span> <span class="n">Format</span><span class="p">(</span><span class="n">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"The result is: %d"</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="building-and-running">Building and Running</h2>
+
+<p>Unlike C# where you compile to DLLs, Go builds directly to executables:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>myapp
+go build    <span class="c"># Creates an executable</span>
+./myapp     <span class="c"># Run the executable</span>
+</code></pre></div></div>
+
+<p>Or run directly:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go run <span class="nb">.</span>    <span class="c"># Compile and run in one step</span>
+</code></pre></div></div>
+
+<h2 id="summary">Summary</h2>
+
+<ul>
+  <li><strong>Packages</strong> are Go’s equivalent to namespaces, but tied to directories</li>
+  <li><strong>Modules</strong> are collections of packages with versioning (like NuGet packages)</li>
+  <li>Files in the same directory must belong to the same package</li>
+  <li>Import paths include the full module path</li>
+  <li>Only capitalized names are exported (public)</li>
+  <li>No explicit compilation to DLLs - Go builds executables directly</li>
+</ul>
+
+<p>Coming from C# or JavaScript, the biggest adjustments are understanding the package/module relationship and getting used to organizing code by directory structure rather than just by namespaces.</p>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+
+
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/blog/assets/img/self.jfif"
+  
+  alt="Carlos Kelkboom"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>Hi, I’m Carlos, and I’ve been a software developer for over 20 years. I’ve learned a lot 
+from blog posts, Stack Overflow, and YouTube, but I’ve never felt confident enough to share 
+my knowledge and give back to the community.</p>
+
+<p>This blog is my attempt to return the favor and give back to the community.</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social</span>
+<ul>
+  
+    
+    
+
+    
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/baudin999" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+
+    
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:baudin-sky@pm.me" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+
+
+
+
+
+
+
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/blog/2025/03/23/luanti.html" class="flip-title"><span>Luanti</span></a>  <time class="faded fine" datetime="2025-03-23T00:00:00+01:00">23 Mar 2025</time></li>                        <li class="h4">  <a href="/blog/2025/03/23/filter-theory-part-3.html" class="flip-title"><span>Filter Theory - A Simpler, More Elegant Approach to Consciousness</span></a>  <time class="faded fine" datetime="2025-03-23T00:00:00+01:00">23 Mar 2025</time></li>                        <li class="h4">  <a href="/blog/2025/03/23/filter-theory-part-2.html" class="flip-title"><span>From Filter Theory to Dreaming Machines - A Framework for Consciousness</span></a>  <time class="faded fine" datetime="2025-03-23T00:00:00+01:00">23 Mar 2025</time></li>            </ul></aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Utterances integration code starts here -->
+<script src="https://utteranc.es/client.js" repo="Baudin999/blog" issue-term="pathname" theme="github-light"
+    crossorigin="anonymous" async>
+    </script>
+<!-- Utterances integration code ends here -->
+  
+<footer class="content" role="contentinfo">
+  <hr />
+  <p><small>Powered by Baudin's playground v<span id="_version">1.0.0</span></small></p>
+  <hr class="sr-only" />
+</footer>
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(45, 16, 9);background-image:url(/blog/assets/img/site_bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+    <a class="sidebar-title" href="/blog/"><h2 class="h1">Carlos's Blog</h2></a>
+    
+    
+      <p class="fine">
+        I have been consuming the combined knowledge of my heroes for years. Now, after over 20 years as a software developer, I am ready to give back to everyone. I hope you enjoy!
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+    
+      
+      <li>
+        <a
+          id="_drawer--opened"
+          href="/blog/resume/"
+          class="sidebar-nav-item "
+          
+        >
+          Résumé
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/blog/about/"
+          class="sidebar-nav-item "
+          
+        >
+          About me
+        </a>
+      </li>
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social</span>
+<ul>
+  
+    
+    
+
+    
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/baudin999" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+
+    
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:baudin-sky@pm.me" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>(()=>{var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())})();
+</script>
+  <script src="/blog/assets/js/hydejack-9.2.1.js" type="module"></script>
+  <script src="/blog/assets/js/LEGACY-hydejack-9.2.1.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates:</h2>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading: <a class="this-link" href=""></a>.
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+  
+    <template id="_dark-mode-template">
+  <button id="_dark-mode" class="nav-btn no-hover" >
+    <span class="sr-only">Dark Mode</span>
+    <span class="icon-brightness-contrast"></span>
+  </button>
+</template>
+
+  
+</div>
+
+
+</body>
+
+
+</html>
