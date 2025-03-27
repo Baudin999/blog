@@ -2,7 +2,7 @@
 layout: post
 title: How to scale a Software business 
 author: Carlos Kelkboom
-date: 2025-03-22
+date: 2025-03-26
 published: true
 tags: Software Development
 ---
